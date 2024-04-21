@@ -1,4 +1,6 @@
-# React + Vite
+# Personal home page for me
+
+# Made with React + Vite
 
 npm create vite@latest home -- --template react
 
