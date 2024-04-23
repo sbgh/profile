@@ -3,6 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
+  --Red: rgba(224, 54, 122, 1);
+  --Green: rgba(122, 224, 54, 1);
+  --Blue: rgba(54, 122, 224, 1);
+  --Yellow: rgba(224, 156, 54, 1);
+
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
   background-color: #ffffff;
@@ -13,11 +18,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root{
+  z-index: 10; 
+}
+
+#main{
+  color: black;
+}
+
 a {
   font-weight: 500;
   color: #333dff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #333dff;
 }
@@ -27,15 +41,16 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
-  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-family: "Montserrat";
 }
 
 button {
@@ -49,9 +64,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -62,14 +79,20 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
+.profilePicCol.col {
+  width: 400px;
+  flex: none;
+}
 
 .profilePic {
   width: 265px;
@@ -78,20 +101,117 @@ button:focus-visible {
   border-radius: 33px;
 }
 
-.profilePicRow{
+.profilePicRow {
   justify-content: center;
 }
 
-.profileText{
+.profileText {
   text-align: left;
 }
 
 .profileTextRow {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
 }
 
 .profileFa {
   margin-bottom: 3px;
-  padding-right: 3px;
+  margin-right: 3px;
+}
+
+.ProfileBtnRow.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.ProfileBtnRow div {
+  max-width: 120px;
+}
+
+.profileTextRow.profileRes {
+  background-color: var(--Blue);
+  border-radius: 10px;
+}
+
+.profileTextRow.liLink {
+  background-color: var(--Red);
+  border-radius: 10px;
+}
+
+.profileTextRow.ghLink {
+  background-color: var(--Yellow);
+  border-radius: 10px;
+}
+
+.profileTextRow a {
+  color: white;
+}
+
+.ProfileBtnRow.row div {
+  margin: 0 3px;
+  opacity: 0;
+  text-align: center;
+  transform: translateX(5000px);
+}
+
+@media (max-height: 501px) {
+
+  h1,
+  h2,
+  h3 {
+    font-size: 2.2em;
+  }
+
+}
+
+@media (max-width: 501px) {
+
+  #root {
+    padding: 1rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: 2.2em;
+  }
+
+}
+
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 5s ;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: backdrop-filter 3s ;
+  backdrop-filter: grayscale(1) sepia(.5) hue-rotate(0deg) ;
+}
+.background-change::before {
+  content: 'changed';
+  backdrop-filter: grayscale(0) sepia(.0) hue-rotate(0deg) ;
+}
+
+
+
+#background img {
+  width: 100vw;
+}
+
+div#main {
+  backdrop-filter: blur(8px);
+  transition: color 2s ;
 }

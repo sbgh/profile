@@ -10,8 +10,8 @@ const Cube = () => {
             const duration = 10000
 
             for (let j = 0; j < n; j++) {
-                var pEle = $("body");
-                var eleObj = $("#cube").clone().prependTo(pEle)
+                var pEle = $("#background");
+                var eleObj = $("#cube").clone().insertAfter(pEle)
                 eleObj.removeAttr("id");
                 eleObj.attr("id", "cube_" + j);
                 eleObj.addClass("cube-clone");
@@ -115,9 +115,9 @@ const Cube = () => {
                         eleObj.remove()
                     }
                     cubes = [];
-                    setTimeout(function () {
-                        makeCubes()
-                    }, 60000)
+                    // setTimeout(function () {
+                    //     makeCubes()
+                    // }, 60000)
                 }
             } else {
                 frameLag = timeStamp - lastTimeStamp;
@@ -126,9 +126,29 @@ const Cube = () => {
             }
         }
     }
+
+    
+    function fadeBack(){
+        $("#background").css({"opacity":".7"})
+        $("#main").css({color:"white"})
+    }
+    function sepChange(){
+        $("#background").addClass("background-change")
+    }       
+
+
+
     setTimeout(function () {
         makeCubes()
     }, 6000)
+
+    setTimeout(function () {
+        fadeBack()
+    }, 18000)
+
+    setTimeout(function () {
+        sepChange()
+    }, 28000)
 
 
     return (
