@@ -22,8 +22,23 @@
   z-index: 10; 
 }
 
-#main{
+#main, #rootMain, #mainInfo {
   color: black;
+  border: #d5d5d51f  solid 10px;
+  border-radius: 66px;
+  overflow: hidden;
+  background-color: rgb(255 255 255 / 25%);
+  width: 400px;
+  margin: 15px;
+  padding: 0;
+}
+#mainInfo { 
+   background-color: #ffffffc7;
+   padding: 10px;
+}
+.container-fluid {
+  padding: 0;
+  padding: 15px 0;
 }
 
 a {
@@ -39,6 +54,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   place-items: center;
   min-width: 320px;
   height: 100vh;
@@ -46,10 +62,17 @@ body {
   
 }
 
-h1,
-h2,
-h3 {
+h1{
   font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.1;
+}
+h3 {
+  font-size: 1.0em;
   line-height: 1.1;
 }
 
@@ -94,19 +117,44 @@ button:focus-visible {
   flex: none;
 }
 
+
+#main img.backPic, #rootMain img.backPic {
+  content: var(--backPic);
+  height: 185px;
+  opacity: .8;
+  filter: blur(20px);
+  height: 167px;
+  overflow: hidden;
+  display: block;
+  border-radius: 50px;
+}
+
+.profilePicSection{
+  background-color: #ffffff;
+}
+
 .profilePic {
-  width: 265px;
-  height: 300px;
+  width: 145px;
+  height: 164px;
   z-index: 1000;
-  border-radius: 33px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: 10px 7px 11px #12121245;
+  position: absolute;
 }
 
 .profilePicRow {
   justify-content: center;
 }
-
-.profileText {
+ 
+.about {
   text-align: left;
+  /* display: none; */
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 1.1;
 }
 
 .profileTextRow {
@@ -123,28 +171,29 @@ button:focus-visible {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .ProfileBtnRow div {
   max-width: 120px;
 }
 
-.profileTextRow.profileRes {
+.profileBtn.profileRes {
   background-color: var(--Blue);
   border-radius: 10px;
 }
 
-.profileTextRow.liLink {
+.profileBtn.liLink {
   background-color: var(--Red);
   border-radius: 10px;
 }
 
-.profileTextRow.ghLink {
+.profileBtn.ghLink {
   background-color: var(--Yellow);
   border-radius: 10px;
 }
 
-.profileTextRow a {
+.profileBtn a {
   color: white;
 }
 
@@ -179,7 +228,7 @@ button:focus-visible {
 
 }
 
-#background {
+#background, #backgroundGrav {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -198,20 +247,19 @@ button:focus-visible {
   width: 100%;
   height: 100%;
   transition: backdrop-filter 3s ;
-  backdrop-filter: grayscale(1) sepia(.5) hue-rotate(0deg) ;
+  backdrop-filter: grayscale(1) sepia(.0) hue-rotate(0deg) ;
 }
 .background-change::before {
-  content: 'changed';
+  content: '';
   backdrop-filter: grayscale(0) sepia(.0) hue-rotate(0deg) ;
 }
 
-
-
-#background img {
-  width: 100vw;
+#background>img, #backgroundGrav>img {
+  min-width: 100vw;
+  object-fit: cover;
 }
 
-div#main {
-  backdrop-filter: blur(8px);
-  transition: color 2s ;
+.profileText{
+  /* backdrop-filter: blur(8px);
+  transition: color 2s ; */
 }

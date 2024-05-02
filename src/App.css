@@ -1,5 +1,11 @@
-#root {
-  max-width: 1280px;
+:root {
+  --cubesizeX: 50px;
+  --cubesizeY: 50px;
+  --cubesizeZ: 50px;
+}
+
+#root, #rootGrav {
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -8,7 +14,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  position: absolute;
 }
+
 
 body {
   overflow: hidden;
@@ -20,9 +29,11 @@ body {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -31,6 +42,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -51,71 +63,120 @@ body {
 }
 
 /* ==== cube ======= */
-#cube-container{
+
+#cube-container {
   position: absolute;
   height: 100%;
   width: 100%;
   display: none;
 }
+
 .cube {
-width: 50px;
-height: 50px;
-position: absolute;
-display: none;
-perspective: 5000px;
-transform-style: preserve-3d;
-}
-.cube-face {
-  width: inherit;
-  height: inherit;
+  display: flex;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  width: var(--cubesizeX);
+  height: var(--cubesizeY);
   position: absolute;
-  border: solid 2px;
-  border-radius: 3px;
-}
-.cube-face-front {
-transform: translate3d(0, 0, 25px);
-} 
-.cube-face-back {
-transform: rotateY(180deg) translate3d(0, 0, 25px);
-} 
-.cube-face-left {
-transform: rotateY(-90deg) translate3d(0, 0, 25px);
-} 
-.cube-face-right {
-transform: rotateY(90deg) translate3d(0, 0, 25px);
-} 
-.cube-face-top {
-transform: rotateX(90deg) translate3d(0, 0, 25px);
-} 
-.cube-face-bottom {
-transform: rotateX(-90deg) translate3d(0, 0, 25px);
+  justify-content: left;
+  top: 0;
+  left: 0;
+  /* display: none; */
+  /* border: solid red 1px; */
+  perspective: calc(var(--cubesizeX) * 100);
+  transform-style: preserve-3d;
+  /* transform-origin: center;
+  transform-box: fill-box; */
 }
 
-.heart { 
-  position: absolute; 
-  width: 100px; 
-  height: 90px; 
-  /*transform: scale(.3) translate3d(-84px, 236px, 2px) ;*/
+.cube-face {
+  position: absolute;
+  border: solid rgba(0, 0, 0, 0) 2px;
+  border-radius: 3px;
+  /* transform-origin: 50% 50% 50%; */
+  /* transform-box: fill-box; */
+  display: flex;
+  place-items: center;
+  align-items: center;
+
+  /* max-width: 1280px; */
+  /* margin: 0 auto;
+  padding: 2rem; */
+  text-align: center;
+
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cube-face-front {
+  width: var(--cubesizeX);
+  height: var(--cubesizeY);
+  transform: translate3d(0, 0, calc(var(--cubesizeZ) / 2));
+}
+
+.cube-face-back {
+  width: var(--cubesizeX);
+  height: var(--cubesizeY);
+  transform: rotateY(180deg) translate3d(0, 0, calc(var(--cubesizeZ) / 2));
+}
+
+.cube-face-left {
+  width: var(--cubesizeZ);
+  height: var(--cubesizeY);
+  transform: rotateY(-90deg) translate3d(0, 0, calc(var(--cubesizeX) / 2));
+}
+
+.cube-face-right {
+  width: var(--cubesizeZ);
+  height: var(--cubesizeY);
+  transform: rotateY(90deg) translate3d(0, 0, calc(var(--cubesizeX) / 2));
+}
+
+.cube-face-top {
+  width: var(--cubesizeX);
+  height: var(--cubesizeZ);
+  transform: rotateX(90deg) translate3d(0, 0, calc(var(--cubesizeY) / 2));
+}
+
+.cube-face-bottom {
+  width: var(--cubesizeX);
+  height: var(--cubesizeZ);
+  transform: rotateX(-90deg) translate3d(0, 0, calc(var(--cubesizeY) / 2));
+}
+
+div#cubeStore {
+  position: absolute;
+  width: 100%;
+}
+
+/* .heart {
+  position: absolute;
+  width: 100px;
+  height: 90px;
   transform: scale(.4) translate3d(-62px, -38px, 0px);
   transform-origin: center;
   opacity: 0.3;
-} 
-
-.heart:before, .heart:after { 
-  position: absolute; 
-  content: ""; 
-  left: 50px; 
-  top: 0; 
-  width: 50px; 
-  height: 80px; 
-  background: red; 
-  border-radius: 50px 50px 0 0; 
-  transform: rotate(-45deg); 
-  transform-origin: 0 100%; 
-} 
-
-.heart:after { 
-  left: 0; 
-  transform: rotate(45deg); 
-  transform-origin :100% 100%; 
 }
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: red;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+} */

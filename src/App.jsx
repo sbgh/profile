@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Profile from './components/profile'
+import Info from './components/info'
 import Cube from './components/cube'
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -10,12 +11,18 @@ function App() {
 
   return (
     <>
+      <div className="row">
+        <div id="main" className="col main">
 
-      <div id="main" className="main">
+          <Profile />
+          <Cube />
 
-      <Profile />
-      <Cube />
+        </div>
+        <div id="mainInfo" className="cal main">
 
+          <Info />
+
+        </div>
       </div>
     </>
   )
