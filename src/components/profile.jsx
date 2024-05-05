@@ -6,7 +6,6 @@ import { FaLinkedin, FaCloudDownloadAlt, FaGithub } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import Pic from '../assets/DSH_Profile-square_sm.png';
 import ezstack from '../assets/ezstack.png';
 import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
@@ -50,6 +49,7 @@ const Profile = () => {
                                 <img src={Pic} className="profilePic" />
                             </Row>
                             <Row className="justify-content-md-left">
+
                                 <div className='profileText profileName'><h1>Scott Hurd</h1></div>
                                 <div className='profileText profileTag'><h2>Husband, father of 3, Software Engineer, UI Developer and System Administrator.</h2></div>
                                 <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
