@@ -18,8 +18,6 @@ const Info = () => {
                         <Col className='about'>
                             <Row className='profileText'>
 
-                                {/* className='carousel-dark slide' */}
-
                                 <Carousel className='carousel-dark slide' >
                                     <Carousel.Item interval={20000}>
                                         
@@ -32,7 +30,7 @@ const Info = () => {
                                     <Carousel.Item interval={10000}>
 
                                         <h1>HIGHLIGHTS OF QUALIFICATIONS/SKILLS </h1>
-                                        <p>
+                                        {/* <p> */}
                                             <ul>
                                                 <li>IT consultanting</li>
                                                 <li>IT architecture</li>
@@ -43,7 +41,7 @@ const Info = () => {
                                                 <li>Systems administration</li>
                                                 <li>Certified IBM IT Specialist</li>
                                             </ul>
-                                        </p>
+                                        {/* </p> */}
 
                                     </Carousel.Item>
                                     {/* <Carousel.Item>

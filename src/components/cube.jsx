@@ -134,7 +134,7 @@ const Cube = () => {
         var frame = 0;
         var lastTimeStamp = new Date().getTime();
         var frameLag = 16;
-        
+
         setupSwarmElements("cube", 20);
     }
 
@@ -160,51 +160,62 @@ const Cube = () => {
             "opacity": "0"
         });
 
+        $("#background>img").removeClass("zoomed")
+
         $("#backgroundGrav").css({
-            "transition": "all 8s",
+            "transition": "transform 8s, opacity 6s",
             "opacity": "0",
             "transform": 
                 "translate(" + ((r1 - 0.5) * eWidth).toString() + "px, " + ((r2 - 0.5) * eHeight).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
             // "transform-origin": "center"
         });
-        $("#background").removeClass("background-change")
 
         setTimeout(function () {
             $('#backgroundGrav').remove()
+            $("#background>img").removeClass("background-change")
+            $("#background>img").removeClass("zoomed")
         }, 6000)
 
     }
 
     function fadeBack() {
-        $("#background").css({ 
+        //fade background into view
+        $("#background").css({
             "transition": "opacity 8s",
-            "opacity": ".7" 
+            "opacity": ".7"
+
         })
-    }
-    function sepChange() {
-        $("#background").addClass("background-change")
+
+        $("#background>img").addClass("zoomed")
+        // $("#backgroundGrav>img")
     }
 
+    function sepChange() {
+        //change background filter
+        $("#background>img").addClass("background-change")
+
+        // $("#backgroundGrav>img.zoomed").css({"transform": "scale(1.1)"})
+    }
 
     function loop() {
         setTimeout(function () {
             makeCubes()
-        }, 6000)
+        }, 10000)
 
         setTimeout(function () {
             fadeBack()
-        }, 22000)
-
-        setTimeout(function () {
-            sepChange()
         }, 30000)
 
         setTimeout(function () {
+            sepChange()
+        }, 50000)
+
+        setTimeout(function () {
             grav()
-        }, 40000)
+        }, 60000)
     }
     loop()
-    setInterval(loop, 60000)
+    setInterval(loop, 70000)
 
     return (
         <div>
