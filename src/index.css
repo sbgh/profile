@@ -232,22 +232,24 @@ h2 {
   transform: scale(1.0);
 }
 
-#background>img.background-change{
-  transition: filter 3s; 
-  filter: grayscale(0) sepia(.0) hue-rotate(0deg);
-  /* transform: scale(1.1); */
-}
-
 #background>img,
 #backgroundGrav>img {
   min-width: 100vw;
   object-fit: cover;
-  transition: transform 20s ease;
+  /* transition: transform 22s ease-in, filter 3s linear; */
 }
 
 #background>img.zoomed,
 #backgroundGrav>img.zoomed {
+  transition: transform 22s ease-in;
   transform: scale(1.1);
+}
+
+#background>img.background-change,
+#backgroundGrav>img.background-change {
+  transition: transform 10s ease-out, filter 3s linear;
+  filter: grayscale(0) sepia(.0) hue-rotate(0deg);
+  transform: scale(1.13);
 }
 
 .profileText {
