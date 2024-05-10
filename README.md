@@ -1,5 +1,5 @@
 # Personal home page for me
- [Personal home page for me](https://ezstacksystems.com/) 
+ [ezStack Systems](https://ezstacksystems.com/) 
 
 
 # Made with React + Vite
