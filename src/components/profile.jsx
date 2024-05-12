@@ -8,14 +8,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Pic from '../assets/DSH_Profile-square_sm.png';
 import ezstack from '../assets/ezstack.png';
-import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
-// import Resume from '../assets/Scott_Hurd_Resume_online.docx';
+// import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
 import { BsDisplay } from 'react-icons/bs';
 
 const Profile = () => {
 
     $("html head").prepend('<link rel="icon" type="image/png" href="' + ezstack + '">')
-    $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src=' + Mont + ' className="mont" /></div>')
+    // $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src=' + Mont + ' className="mont" /></div>')
 
     const backPic = { Pic }
     $("body").get(0).style.setProperty("--backPic", "url(" + backPic.Pic + ")")
@@ -55,7 +54,6 @@ const Profile = () => {
                                 <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
                             </Row>
                             <Row className='ProfileBtnRow'>
-                                {/* <div className='profileBtn profileRes'><a href={Resume} download="Scott_Hurd_Resume.docx">< FaCloudDownloadAlt className='profileFa' />Resume</a></div> */}
                                 <div className='profileBtn liLink'><a href='https://www.linkedin.com/in/scott-hurd-calgary/' target='_new'>< FaLinkedin className='profileFa' /></a></div>
                                 <div className='profileBtn ghLink'><a href='https://github.com/sbgh' target='_new'>< FaGithub className='profileFa' /></a></div>
                             </Row>

@@ -1,4 +1,5 @@
-import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
+// import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
+// import Cloud from '../assets/1108225_1080p_Pines_Valley_1280x720.mp4';
 import $ from 'jquery';
 
 const Cube = () => {
@@ -14,8 +15,8 @@ const Cube = () => {
 
         function setupSwarmElements(elementId, n) {
 
-            const duration = 15000
-            const rotations = 10
+            const duration = 20000
+            const rotations = 15
 
             for (let j = 0; j < n; j++) {
                 var pEle = $("#cubeStore");
@@ -91,7 +92,7 @@ const Cube = () => {
                         "-webkit-backface-visibility": "initial",
                         // "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight - eHeight / 2).toString() + "px) scale(" + (r3 * 2 + .1).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
                         // "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight - eHeight / 2).toString() + "px) scale(" + (r3).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
-                        "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight).toString() + "px) scale(" + (r3).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
+                        "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight).toString() + "px) scale(" + (r3 * 1.5).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
                         // "transform": "translate(" + ((r1 * 2 - 1) * eWidth).toString() + "px, " + ((r2 * 2 - 1) * eHeight).toString() + "px) scale(" + (r3).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
 
                         "transform-origin": "center"
@@ -138,7 +139,6 @@ const Cube = () => {
         setupSwarmElements("cube", 20);
     }
 
-
     function grav() {
 
         $("#background").clone().insertAfter('#background').prop('id', 'backgroundGrav')
@@ -165,7 +165,7 @@ const Cube = () => {
         $("#backgroundGrav").css({
             "transition": "transform 8s, opacity 6s",
             "opacity": "0",
-            "transform": 
+            "transform":
                 "translate(" + ((r1 - 0.5) * eWidth).toString() + "px, " + ((r2 - 0.5) * eHeight).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
             // "transform-origin": "center"
         });
@@ -197,30 +197,66 @@ const Cube = () => {
         // $("#backgroundGrav>img.zoomed").css({"transform": "scale(1.1)"})
     }
 
+    function vidDrop() {
+
+        $("#dropVid").addClass('dropVid-changed')
+        $('#dropVid').prop({
+            currentTime: 0
+        });
+
+
+        // css({
+        //     'transition': 'transform 15s, opacity 7s',
+        //     'transform': 'scale(1)',
+        //     'opacity': '1'
+        // })
+
+        // document.querySelector('dropVid').playbackRate = 0.2;
+        $('#dropVid').prop({
+            playbackRate: 0.8
+        });
+
+        // setTimeout(function () {
+        $('#dropVid')[0].play();
+        // }, 2000)
+
+        setTimeout(function () {
+            
+            $("#dropVid").removeClass('dropVid-changed')
+
+        }, 9000)
+    }
+
+
     function loop() {
+
         setTimeout(function () {
             makeCubes()
         }, 10000)
 
         setTimeout(function () {
             fadeBack()
-        }, 30000)
+        }, 40000)
 
         setTimeout(function () {
             sepChange()
-        }, 50000)
+        }, 60000)
 
         setTimeout(function () {
             grav()
-        }, 60000)
+        }, 80000)
+       
+        setTimeout(function () {
+            vidDrop()
+        }, 90000)
+
     }
     loop()
-    setInterval(loop, 70000)
+    setInterval(loop, 100000)
 
     return (
         <div>
             <div id="cube-container"><div id="cube" className="cube">
-                {/* <div className="heart"></div> */}
                 <div className="cube-face  cube-face-front"></div>
                 <div className="cube-face  cube-face-back"></div>
                 <div className="cube-face  cube-face-left"></div>
