@@ -1,5 +1,6 @@
 // import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
 // import Cloud from '../assets/1108225_1080p_Pines_Valley_1280x720.mp4';
+import imgs from '../components/backgrounds';
 import $ from 'jquery';
 
 const Cube = () => {
@@ -179,7 +180,11 @@ const Cube = () => {
     }
 
     function fadeBack() {
-        //fade background into view
+        //fade rand background into view
+
+        const imgIndex=getRandomInt(0, imgs.length-1)
+        $("#background>img").attr({"src":imgs[imgIndex]})
+
         $("#background").css({
             "transition": "opacity 8s",
             "opacity": ".7"
@@ -224,7 +229,7 @@ const Cube = () => {
             
             $("#dropVid").removeClass('dropVid-changed')
 
-        }, 9000)
+        }, 7000)
     }
 
 

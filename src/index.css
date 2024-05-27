@@ -33,19 +33,28 @@
   width: 400px;
   margin: 15px;
   padding: 0;
+  transition: ;
+  
 }
 
 #main {
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity .2s, transform 500ms cubic-bezier(.51,0,.68,1.38);
+  /* transform: translateY(5000px); */
 }
 
 #mainInfo {
-  transition: opacity 1s;
+  transition: opacity .2s, transform 500ms cubic-bezier(.51,0,.68,1.38);
   opacity: 0;
+  /* transform: translateY(5000px); */
   background-color: #ffffffc7;
   padding: 10px;
   width: 600px;
+}
+
+#main.main.mainShow, #mainInfo.main.mainShow{
+  opacity: 1;
+  /* transform: translateY(0px); */
 }
 
 .container-fluid {
@@ -188,8 +197,9 @@ h2 {
   justify-content: center;
 }
 
-.ProfileBtnRow div {
+.ProfileBtnRow a {
   max-width: 120px;
+  color: rgb(255, 255, 255);
 }
 
 .profileBtn.profileRes {
@@ -211,8 +221,9 @@ h2 {
   color: white;
 }
 
-.ProfileBtnRow.row div {
+.ProfileBtnRow.row a {
   margin: 0 3px;
+  padding: 0;
   opacity: 0;
   text-align: center;
   transform: translateX(5000px);

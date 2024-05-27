@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { useEffect } from "react"
 import Profile from './components/profile'
@@ -6,9 +7,9 @@ import Cube from './components/cube'
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
-import Mont from './assets/pexels-eberhardgross-1062249.jpg';
+import Cloud from './assets/Pines_Valley_1280x720.mp4';
 
-import Cloud from './assets/1108225_1080p_Pines_Valley_1280x720.mp4';
+import imgs from './components/backgrounds';
 
 import './App.css'
 
@@ -20,15 +21,18 @@ function App() {
 
     const vidEle = $($.parseHTML('<video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video>'))
     $("body").prepend(vidEle)
-    $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src=' + Mont + ' className="mont" /></div>')
+    $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src="'+imgs[0]+'" className="mont" /></div>')
 
     setTimeout(function () {
-      $('#main').css({"opacity":"1"})
+      $('#main').addClass("mainShow")
     }, 600)
 
     setTimeout(function () {
-      $('#mainInfo').css({"opacity":"1"})
+      $('#mainInfo').addClass("mainShow")
     }, 1000)
+
+    // const images = require.context('./assets', true);
+    // console.log({images})
 
   }, [])
 

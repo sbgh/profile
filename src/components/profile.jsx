@@ -8,8 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Pic from '../assets/DSH_Profile-square_sm.png';
 import ezstack from '../assets/ezstack.png';
-// import Mont from '../assets/pexels-eberhardgross-1062249.jpg';
-import { BsDisplay } from 'react-icons/bs';
+// import { BsDisplay } from 'react-icons/bs';
 
 const Profile = () => {
 
@@ -21,8 +20,8 @@ const Profile = () => {
 
     setTimeout(function () {
 
-        $(".ProfileBtnRow.row div").each(function (index) {
-            const eleObj = $($(".ProfileBtnRow.row div")[index])
+        $(".ProfileBtnRow.row a").each(function (index) {
+            const eleObj = $($(".ProfileBtnRow.row a")[index])
             const delay = index * 500
             eleObj.css({
                 "opacity": "1",
@@ -54,8 +53,8 @@ const Profile = () => {
                                 <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
                             </Row>
                             <Row className='ProfileBtnRow'>
-                                <div className='profileBtn liLink'><a href='https://www.linkedin.com/in/scott-hurd-calgary/' target='_new'>< FaLinkedin className='profileFa' /></a></div>
-                                <div className='profileBtn ghLink'><a href='https://github.com/sbgh' target='_new'>< FaGithub className='profileFa' /></a></div>
+                            <a href='https://www.linkedin.com/in/scott-hurd-calgary/' target='_new'><div className='profileBtn liLink'>< FaLinkedin className='profileFa' /></div></a>
+                                <a href='https://github.com/sbgh' target='_new'><div className='profileBtn ghLink'>< FaGithub className='profileFa' /></div></a>
                             </Row>
                         </Col>
 
