@@ -281,7 +281,7 @@ h2 {
 }
 
 #dropVid.dropVid-changed {
-  transition: transform 8s ease-out, opacity 1000ms;
+  transition: transform 9s ease-out, opacity 1000ms;
   transform: scale(1.0);
   opacity: 1;
 }
