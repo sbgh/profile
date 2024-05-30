@@ -20,6 +20,7 @@
 
 #root {
   z-index: 10;
+  width: 100%;
 }
 
 #main,
@@ -30,17 +31,16 @@
   border-radius: 66px;
   overflow: hidden;
   background-color: rgb(255 255 255 / 25%);
-  width: 400px;
   margin: 15px;
   padding: 0;
-  transition: ;
   
 }
 
 #main {
   opacity: 0;
   transition: opacity .2s, transform 500ms cubic-bezier(.51,0,.68,1.38);
-  /* transform: translateY(5000px); */
+  width: 400px;
+  max-width: 400px;
 }
 
 #mainInfo {
@@ -50,6 +50,10 @@
   background-color: #ffffffc7;
   padding: 10px;
   width: 600px;
+}
+
+.mainContent{
+  justify-content: center;
 }
 
 #main.main.mainShow, #mainInfo.main.mainShow{
@@ -286,10 +290,10 @@ h2 {
   opacity: 1;
 }
 
-.profileText {
-  /* backdrop-filter: blur(8px);
-  transition: color 2s ; */
-}
+/* .profileText {
+  backdrop-filter: blur(8px);
+  transition: color 2s ;
+} */
 
 .carousel-indicators {
   margin: 1rem 0 0 0;
@@ -304,6 +308,40 @@ h2 {
   margin-left: 53px;
 }
 
+.nav{
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  position: absolute;
+}
+
+.modal-dialog {
+  width: 100%;
+  padding: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.modal.show {
+  backdrop-filter: grayscale(1) blur(5px);
+}
+
+.modal-content div {
+  border: none;
+}
+
+.modal-body {
+  text-align: center;
+  font-size: 20px;
+}
+
+button.btn.btn-primary {
+  background-color: var(--Blue);
+}
+
+input.inputBox {
+  background-color: white;
+}
 
 @media (max-height: 501px) {
 

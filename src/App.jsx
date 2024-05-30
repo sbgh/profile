@@ -1,8 +1,11 @@
 
 import { useEffect } from "react"
+import AppNav from './components/nav'
 import Profile from './components/profile'
 import Info from './components/info'
 import Cube from './components/cube'
+import Support from './components/support'
+import Login from './components/login'
 import { makeCubes } from './components/cube';
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
@@ -11,10 +14,11 @@ import Cloud from './assets/Pines_Valley_1280x720.mp4';
 
 import imgs from './components/backgrounds';
 
+import { useState } from 'react';
+
 import './App.css'
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -123,7 +127,6 @@ function App() {
       }, 7000)
     }
 
-
     function loop() {
 
       setTimeout(function () {
@@ -152,9 +155,18 @@ function App() {
 
   }, [])
 
+  const [supportShow, setSupportShow] = useState(false);
+  const handleSupportShow = () => setSupportShow(true);
+  const handleSupportClose = () => setSupportShow(false);
+
+  const [loginShow, setLoginShow] = useState(false);
+  const handleLoginShow = () => setLoginShow(true);
+  const handleLoginClose = () => setLoginShow(false);
+
   return (
     <>
-      <div className="row">
+      <AppNav supportButtonClicked={ handleSupportShow } loginButtonClicked={ handleLoginShow } />
+      <div className="row mainContent">
         <div id="main" className="col main">
 
           <Profile />
@@ -167,6 +179,8 @@ function App() {
 
         </div>
       </div>
+      <Support show={supportShow} onClose={handleSupportClose} />
+      <Login show={loginShow} onClose={handleLoginClose} />
     </>
   )
 }
