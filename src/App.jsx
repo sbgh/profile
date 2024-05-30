@@ -35,6 +35,10 @@ function App() {
     $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
 
     setTimeout(function () {
+      $('.nav').addClass("show")
+    }, 2000)
+
+    setTimeout(function () {
       $('#main').addClass("mainShow")
     }, 600)
 
@@ -69,7 +73,7 @@ function App() {
       $("#background>img").removeClass("zoomed")
 
       $("#backgroundGrav").css({
-        "transition": "transform 8s, opacity 6s",
+        "transition": "transform 10s ease-in-out, opacity 9.5s ease-in",
         "opacity": "0",
         "transform":
           "translate(" + ((r1 - 0.5) * eWidth).toString() + "px, " + ((r2 - 0.5) * eHeight).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
@@ -80,7 +84,7 @@ function App() {
         $('#backgroundGrav').remove()
         $("#background>img").removeClass("background-change")
         $("#background>img").removeClass("zoomed")
-      }, 6000)
+      }, 12000)
 
     }
 
@@ -173,7 +177,7 @@ function App() {
           <Cube />
 
         </div>
-        <div id="mainInfo" className="cal main">
+        <div id="mainInfo" className="col main mainInfo">
 
           <Info />
 
