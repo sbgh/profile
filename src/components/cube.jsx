@@ -22,8 +22,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const makeCubes = async (type) => {
-    // function makeCubes() {
+const makeCubes = async () => {
     var cubes = []
 
     function setupSwarmElements(elementId, n) {
@@ -97,17 +96,11 @@ const makeCubes = async (type) => {
 
                 var eleObj = $("#" + cube.id)
                 var eWidth = eleObj.parent().width() * 0.95;
-
                 var eHeight = $(window).height();
-                // eleObj.show();
 
                 eleObj.css({
                     "-webkit-backface-visibility": "initial",
-                    // "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight - eHeight / 2).toString() + "px) scale(" + (r3 * 2 + .1).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
-                    // "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight - eHeight / 2).toString() + "px) scale(" + (r3).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
                     "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight).toString() + "px) scale(" + (r3 * 1.5).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
-                    // "transform": "translate(" + ((r1 * 2 - 1) * eWidth).toString() + "px, " + ((r2 * 2 - 1) * eHeight).toString() + "px) scale(" + (r3).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
-
                     "transform-origin": "center"
                 });
 
@@ -117,11 +110,6 @@ const makeCubes = async (type) => {
                         "background-color": cube.color + (opacityCurve / 8 * (r3)).toString() + ")"
                     }
                 );
-                // eleObj.find(".heart").css(
-                //     {
-                //         "opacity": (r3 / 6).toString()
-                //     }
-                // )
             }
 
             frameLag = timeStamp - lastTimeStamp;

@@ -5,21 +5,29 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
     const handleSupportShow = () => {
-        {supportButtonClicked()}
-      };
-      const handleLoginShow = () => {
-        {loginButtonClicked()}
-      };
-    
+        { supportButtonClicked() }
+    };
+    const handleLoginShow = () => {
+        { loginButtonClicked() }
+    };
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary nav">
             <Container>
-                <Navbar.Brand href="/">EZSTACK SYSTEMS</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Brand href="/"></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" >
+
+                    <div className="col-auto">
+                        <div className="open-menu">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
                     <Nav className="">
-                        <Nav.Link href="#" onClick={() => handleSupportShow() }>Support</Nav.Link>
-                        <Nav.Link href="#" onClick={() => handleLoginShow() }>Login</Nav.Link>
+                        <Nav.Link href="#" onClick={() => handleSupportShow()}>Support</Nav.Link>
+                        <Nav.Link href="#" onClick={() => handleLoginShow()}>Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

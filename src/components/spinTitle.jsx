@@ -1,0 +1,53 @@
+
+// import { useEffect } from "react"
+import $ from 'jquery'
+
+const spinTitle = async () => {
+    // useEffect(() => {
+
+        $("#mainTitle").append("<div id='spinTitleContain'></div>")
+        function setupSpinTitle() {
+            const titleTxt = "ezStack Systems"
+            const titleArr = titleTxt.split("")
+            for (var CharIn in titleArr) {
+                titleArr[CharIn] = titleArr[CharIn] === " " ? "&nbsp;" : titleArr[CharIn]
+                const chrHTML = "<div class='spinChr' id='spinChr" + CharIn + "'>" + titleArr[CharIn] + "</div>"
+                const charEle = $($.parseHTML(chrHTML))
+                $("#spinTitleContain").append(charEle)
+
+                var r1 = (Math.random())
+                var r2 = (Math.random())
+                var r3 = (Math.random())
+
+                const eWidth = $(window).width();
+                const eHeight = $(window).height();
+                const rotations = r2 * 720 + 360;
+                $("#spinChr" + CharIn).css({
+                    "transform":
+                        "translate(" + ((r1 - 0.5) * eWidth * 2).toString() + "px, " + ((r2 - 0.5) * eHeight * 2).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
+                })
+            }
+
+            setTimeout(function () {
+                for (var CharIn in titleArr) {
+                    var r3 = (Math.random())
+                    var delay = (r3 * 2000).toFixed(2) + "ms"
+                    $("#spinChr" + CharIn).css({
+                        "transition-delay": delay,
+                        // "font-size": "75px",
+                        "color": "#000000ff",
+                        "transition": "color 2s " + delay + ", transform 2s ease-out " + delay + ", scale 2s ease-out " + delay,
+                        "transform": "translate(0 , 0) scale(1)"
+                    })
+                }
+            }, 500)
+
+
+        }
+        setupSpinTitle()
+
+    // })
+}
+
+export { spinTitle }
+

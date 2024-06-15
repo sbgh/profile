@@ -7,6 +7,7 @@ import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
 import { makeCubes } from './components/cube';
+import { spinTitle } from './components/spinTitle';
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
@@ -30,29 +31,58 @@ function App() {
   useEffect(() => {
     // console.log("logging this here")
 
-    const vidEle = $($.parseHTML('<video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video>'))
-    $("body").prepend(vidEle)
-    $("body").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
+    const vidEle = $($.parseHTML('<div id="vidContainer"><video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video></div>'))
+    $("#mainTitle").prepend(vidEle)
+    $("#mainTitle").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
 
     setTimeout(function () {
       $('.nav').addClass("show")
     }, 2000)
 
-    setTimeout(function () {
-      $('#main').addClass("mainShow")
-    }, 600)
 
+    let options = {
+      root: document.querySelector("#mainContent"),
+      rootMargin: "0px",
+      threshold: 0.8,
+    };
+
+
+    let showMain = function (entries, observer) {
+      entries.forEach(entry => {
+
+        if (entry.intersectionRatio > 0) {
+          setTimeout(function () {
+            $('#main').addClass("mainShow")
+          }, 0)
+
+          setTimeout(function () {
+            $('#mainInfo').addClass("mainShow")
+          }, 500)
+        } else {
+
+        }
+      });
+    }
+
+    let observeShowMain = new IntersectionObserver(showMain, options);
+    let target = document.querySelector("#about");
     setTimeout(function () {
-      $('#mainInfo').addClass("mainShow")
-    }, 1000)
+      observeShowMain.observe(target);
+    }, 500)
+
+
 
     // const images = require.context('./assets', true);
     // console.log({images})
 
+    setTimeout(function () {
+      spinTitle()
+    }, 1000)
+
     function grav() {
 
       $("#background").clone().insertAfter('#background').prop('id', 'backgroundGrav')
-      $("#root").clone().appendTo("#backgroundGrav").prop('id', 'rootGrav')
+      // $("#root").clone().appendTo("#backgroundGrav").prop('id', 'rootGrav')
       $("#rootGrav #main").prop('id', 'rootMain')
 
       $("#main").css({ color: "black" })
@@ -169,20 +199,28 @@ function App() {
 
   return (
     <>
-      <AppNav supportButtonClicked={ handleSupportShow } loginButtonClicked={ handleLoginShow } />
-      <div className="row mainContent">
-        <div id="main" className="col main">
+      <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
 
-          <Profile />
+      <div id="mainContent">
+        <div id="mainTitle">
+
           <Cube />
-
         </div>
-        <div id="mainInfo" className="col main mainInfo">
+        <div id="about" className="row about">
 
-          <Info />
+          <div id="main" className="col main">
 
+            <Profile />
+
+          </div>
+          <div id="mainInfo" className="col main mainInfo">
+
+            <Info />
+
+          </div>
         </div>
       </div>
+
       <Support show={supportShow} onClose={handleSupportClose} />
       <Login show={loginShow} onClose={handleLoginClose} />
     </>

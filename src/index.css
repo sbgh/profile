@@ -22,6 +22,24 @@
   z-index: 10;
 }
 
+#mainContent {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 55px);
+  /* margin-top: 55px; */
+}
+
+div#mainTitle {
+  min-height: 100vh;
+  position: relative;
+}
+
+.about {
+  justify-content: center;
+  min-height: 66%;
+  align-content: space-around;
+}
+
 #main,
 #rootMain,
 #mainInfo {
@@ -32,17 +50,18 @@
   background-color: rgb(255 255 255);
   margin: 15px;
   padding: 0;
-  
+  text-align: center;
 }
 
 #main {
   opacity: 0;
-  transition: opacity .2s, transform 500ms cubic-bezier(.51,0,.68,1.38);
+  transition: opacity 1s ease-in, transform 1s ease-out;
+  transform: scale(.6);
   min-width: 400px;
   max-width: 400px;
 }
 
-#mainInfo{
+#mainInfo {
   background-color: #ffffffae;
 }
 
@@ -52,20 +71,18 @@
 }
 
 .mainInfo {
-  transition: opacity .2s ease-in, transform 500ms cubic-bezier(.51,0,.68,1.38);
+  transition: opacity 1s ease-in, transform 1s ease-out;
+  transform: scale(.6);
   opacity: 0;
   padding: 10px;
   max-width: 600px;
   min-width: 600px;
 }
 
-.mainContent{
-  justify-content: center;
-}
-
-#main.main.mainShow, #mainInfo.main.mainShow{
+#main.main.mainShow,
+#mainInfo.main.mainShow {
   opacity: 1;
-  /* transform: translateY(0px); */
+  transform: scale(1);
 }
 
 .container-fluid {
@@ -243,9 +260,9 @@ h2 {
 
 #background,
 #backgroundGrav {
-  position: fixed;
+  position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 55px);
   left: 0;
   top: 0;
   display: flex;
@@ -281,8 +298,17 @@ h2 {
   transform: scale(1.2);
 }
 
+div#vidContainer {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 55px);
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
 #dropVid {
-  position: fixed;
+  position: absolute;
   right: 0;
   bottom: 0;
   min-width: 100%;
@@ -293,7 +319,7 @@ h2 {
 }
 
 #dropVid.dropVid-changed {
-  transition: transform 9s ease-out, opacity 1000ms;
+  transition: transform 10s ease-out, opacity 1000ms;
   transform: scale(1.0);
   opacity: 1;
 }
@@ -316,17 +342,64 @@ h2 {
   margin-left: 53px;
 }
 
-.nav{
+.nav {
   top: 0px;
   left: 0px;
   width: 100%;
-  position: absolute;
+  position: sticky;
   opacity: 0;
+  transform: scale(.6);
+  z-index: 1000;
 }
 
-.nav.show{
-  transition: opacity 0.5s;
+nav .navbar-brand {
+  /* display: none; */
+}
+
+.nav.show {
+  transition: opacity 1s, transform 1s;
   opacity: 1;
+  transform: scale(1);
+}
+
+div#basic-navbar-nav {
+  /* z-index: 0; */
+  top: 0px;
+  width: 100%;
+  border: none;
+}
+
+.open-menu {
+  cursor: pointer;
+}
+
+.open-menu span {
+  display: block;
+  width: 50px;
+  height: 4px;
+  margin-bottom: 12px;
+  background-color: rgb(0, 0, 0);
+  transition: transform 300ms linear;
+}
+
+button.navbar-toggler,
+button.navbar-toggler:focus {
+  outline: none;
+  text-decoration: none;
+  border-color: #ffffff00;
+  box-shadow: none;
+}
+
+button:not(.collapsed) .open-menu span:nth-of-type(1) {
+  transform: rotate(45deg) translate(6px, 13px);
+}
+
+button:not(.collapsed) .open-menu span:nth-of-type(2) {
+  transform: rotate(-45deg) translate(0, -5px);
+}
+
+button.navbar-toggler.collapsed {
+  padding-top: 7px;
 }
 
 .modal-dialog {
@@ -357,6 +430,29 @@ input.inputBox {
   background-color: white;
 }
 
+div#spinTitleContain {
+  display: flex;
+  align-content: space-around;
+  flex-wrap: wrap;
+  align-items: baseline;
+  /* height: 100%; */
+  min-height: calc(100vh - 55px);
+  justify-content: center;
+  overflow: hidden;
+}
+
+.spinChr {
+  font-size: 75px;
+  color: transparent;
+}
+
+/* div.spinChrSpinning {
+  font-size: 75px;
+  color: #000000ff;
+  transition: color 5s, transform 5s ease-out, scale 5s ease-out;
+  transform: translate(0 , 0) scale(1);
+} */
+
 @media (max-height: 501px) {
 
   h1,
@@ -385,9 +481,29 @@ input.inputBox {
     font-size: 1.0em;
   }
 
+  #main,
+  #rootMain,
   #mainInfo {
     padding: 10px;
-    width: 436px;
+    max-width: 350px;
+    min-width: 350px;
+  }
+
+  div#basic-navbar-nav {
+    background-color: white;
+    top: 52px;
+    width: 100%;
+    transition: transform 500ms ease-out;
+    transform: translateY(100vh);
+    /* position: fixed; */
+  }
+
+  div#basic-navbar-nav.show {
+    transform: translateY(65%);
+  }
+
+  .spinChr {
+    font-size: 35px;
   }
 
   .carousel.slide {

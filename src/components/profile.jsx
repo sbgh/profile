@@ -49,7 +49,7 @@ const Profile = () => {
                             <Row className="justify-content-md-left">
 
                                 <div className='profileText profileName'><h1>Scott Hurd</h1></div>
-                                <div className='profileText profileTag'><h2>Husband, father of 3, Software Engineer, UI Developer and System Administrator.</h2></div>
+                                <div className='profileText profileTag'><h2>Full stack web developer and System Administrator.</h2></div>
                                 <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
                             </Row>
                             <Row className='ProfileBtnRow'>

@@ -9,15 +9,17 @@
   
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 
-  height: 100vh;
-  display: flex;
+  /* height: 100vh; */
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 
-  position: absolute;
+  /* overflow-y: auto;
+
+  position: absolute; */
 }
 
 
@@ -152,6 +154,8 @@ body {
 div#cubeStore {
   position: absolute;
   width: 100%;
+  height: calc(100vh - 55px);
+  top: 0;
 }
 
 /* .heart {
