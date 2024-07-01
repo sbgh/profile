@@ -1,9 +1,8 @@
 
-// import { useEffect } from "react"
+
 import $ from 'jquery'
 
 const spinTitle = async () => {
-    // useEffect(() => {
 
         $("#mainTitle").append("<div id='spinTitleContain'></div>")
         function setupSpinTitle() {
@@ -24,7 +23,8 @@ const spinTitle = async () => {
                 const rotations = r2 * 720 + 360;
                 $("#spinChr" + CharIn).css({
                     "transform":
-                        "translate(" + ((r1 - 0.5) * eWidth * 2).toString() + "px, " + ((r2 - 0.5) * eHeight * 2).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
+                    // "perspective(500px) translate3d(" + ((r1 - 0.5) * eWidth * 2).toString() + "px, " +((r2 - 0.5) * eHeight * 2).toString() + "px, " + (-r3 * eHeight+500).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
+                    "perspective(1000px) translate3d(" + ((r1 - 0.5) * eWidth * 2).toString() + "px, " +((r2 - 0.5) * eHeight * 2).toString() + "px, " + (r3 * 10000 - 5000).toString() + "px) rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
                 })
             }
 
@@ -34,10 +34,9 @@ const spinTitle = async () => {
                     var delay = (r3 * 2000).toFixed(2) + "ms"
                     $("#spinChr" + CharIn).css({
                         "transition-delay": delay,
-                        // "font-size": "75px",
                         "color": "#000000ff",
                         "transition": "color 2s " + delay + ", transform 2s ease-out " + delay + ", scale 2s ease-out " + delay,
-                        "transform": "translate(0 , 0) scale(1)"
+                        "transform": "perspective(1000px)  translate3d(0 , 0, 0) rotate3d(0, 0, 0 , 0deg) scale(1)"
                     })
                 }
             }, 500)
@@ -45,8 +44,6 @@ const spinTitle = async () => {
 
         }
         setupSpinTitle()
-
-    // })
 }
 
 export { spinTitle }

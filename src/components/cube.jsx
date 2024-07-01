@@ -92,7 +92,7 @@ const makeCubes = async () => {
                 let r9 = cube.r9
 
                 const rotations = cube.rotations * 360 * r3
-                // let scrollHeight = $("#main").scrollTop() * (1 - r3);
+                let scrollHeight = $("#mainContent").scrollTop() * (1 - r3);
 
                 var eleObj = $("#" + cube.id)
                 var eWidth = eleObj.parent().width() * 0.95;
@@ -100,7 +100,7 @@ const makeCubes = async () => {
 
                 eleObj.css({
                     "-webkit-backface-visibility": "initial",
-                    "transform": "translate(" + (r1 * eWidth).toString() + "px, " + (r2 * eHeight).toString() + "px) scale(" + (r3 * 1.5).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
+                    "transform": "translate(" + (r1 * eWidth).toString() + "px, " + ((r2 * eHeight) + scrollHeight).toString() + "px) scale(" + (-r3 * 1.5).toString() + ") rotate3d(" + (r7 * 2 - 1).toString() + ", " + (r8 * 2 - 1).toString() + ", " + (r9 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) ",
                     "transform-origin": "center"
                 });
 

@@ -4,11 +4,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
+
     const handleSupportShow = () => {
         { supportButtonClicked() }
     };
     const handleLoginShow = () => {
         { loginButtonClicked() }
+    };
+    const handledsStackShow = () => {
+        
+        // console.log( window.location.protocol + '//' + window.location.hostname.split(":")[0] + ':8443' + '/#')
+
+        window.location.href = "https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/'
     };
 
     return (
@@ -28,7 +35,8 @@ const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
                     <Nav className="">
                         <Nav.Link href="#" onClick={() => handleSupportShow()}>Support</Nav.Link>
                         <Nav.Link href="#" onClick={() => handleLoginShow()}>Login</Nav.Link>
-                    </Nav>
+                        <Nav.Link href="#" onClick={() => handledsStackShow()}>dsStack</Nav.Link>
+                        </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

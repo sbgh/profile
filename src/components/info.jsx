@@ -20,8 +20,6 @@ const Info = () => {
 
                                 <Carousel className='carousel-dark slide' >
                                     <Carousel.Item interval={20000}>
-                                        
-                                        {/* <ExampleCarouselImage text="First slide" /> */}
 
                                         <h1>About</h1>
                                         <p>IT professional with extensive knowledge and experience in a wide range if IT roles. Proven skills include application architecture and web development, systems administration, IT coordination, data management, automation script development, Dev-Ops and generation of reports and documentation. A highly motivated & positive individual that enjoys working in collaboration. Passionate about delivering excellence and helping the team and stakeholders with amazing technology. </p>
@@ -44,9 +42,6 @@ const Info = () => {
                                         {/* </p> */}
 
                                     </Carousel.Item>
-                                    {/* <Carousel.Item>
-                                        <ExampleCarouselImage text="Third slide" />
-                                    </Carousel.Item> */}
                                 </Carousel>
                             </Row>
                         </Col>

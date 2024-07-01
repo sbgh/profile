@@ -29,7 +29,6 @@ function App() {
 
 
   useEffect(() => {
-    // console.log("logging this here")
 
     const vidEle = $($.parseHTML('<div id="vidContainer"><video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video></div>'))
     $("#mainTitle").prepend(vidEle)
@@ -45,7 +44,6 @@ function App() {
       rootMargin: "0px",
       threshold: 0.8,
     };
-
 
     let showMain = function (entries, observer) {
       entries.forEach(entry => {
@@ -69,11 +67,6 @@ function App() {
     setTimeout(function () {
       observeShowMain.observe(target);
     }, 500)
-
-
-
-    // const images = require.context('./assets', true);
-    // console.log({images})
 
     setTimeout(function () {
       spinTitle()
@@ -205,6 +198,7 @@ function App() {
         <div id="mainTitle">
 
           <Cube />
+
         </div>
         <div id="about" className="row about">
 
