@@ -3,10 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  --Red: rgba(224, 54, 122, 1);
-  --Green: rgba(122, 224, 54, 1);
-  --Blue: rgba(54, 122, 224, 1);
-  --Yellow: rgba(224, 156, 54, 1);
+  --Red: rgba(224, 54, 122);
+  --Green: rgba(122, 224, 54);
+  --Blue: rgba(54, 122, 224);
+  --Yellow: rgba(224, 156, 54);
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
@@ -27,6 +27,8 @@
   overflow-x: hidden;
   height: calc(100vh - 55px);
   /* margin-top: 55px; */
+  scrollbar-color: white #919191;
+  scroll-behavior: smooth;
 }
 
 div#mainTitle {
@@ -430,28 +432,62 @@ input.inputBox {
   background-color: white;
 }
 
-div#spinTitleContain {
+div#mainTitleContain {
   display: flex;
-  align-content: space-around;
-  flex-wrap: wrap;
-  align-items: baseline;
+  /* align-content: space-around; */
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* align-items: baseline; */
   /* height: 100%; */
   min-height: calc(100vh - 55px);
   justify-content: center;
   overflow: hidden;
 }
 
-.spinChr {
+.mainChr {
   font-size: 75px;
   color: transparent;
+  display: inline-block;
+  text-shadow: #33333300 -1px -1px 14px;
+}
+.raiseChr {
+  font-size: 35px;
+  color: transparent;
+  display: inline-block;
+  text-shadow: #33333300 -1px -1px 10px;
 }
 
-/* div.spinChrSpinning {
-  font-size: 75px;
-  color: #000000ff;
-  transition: color 5s, transform 5s ease-out, scale 5s ease-out;
-  transform: translate(0 , 0) scale(1);
-} */
+div#btnRow {
+  display: flex;
+  padding: 5px;
+  margin: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mainBtn {
+  background: rgb(0, 0, 0);
+  margin: 5px;
+  padding: 0 5px;
+  border: 1px solid black;
+  color: rgb(255, 255, 255);
+  border-radius: 18px;
+  min-width: 80px;
+  font-weight: 900;
+  cursor: pointer;
+  z-index: 1000;
+  transform: translate(200vh, 0px);
+}
+
+#mainBtn0{
+  background: var(--Blue);
+}
+#mainBtn1{
+  background: var(--Red);
+}
+#mainBtn2{
+  background: var(--Yellow);
+}
 
 @media (max-height: 501px) {
 
@@ -502,7 +538,7 @@ div#spinTitleContain {
     transform: translateY(65%);
   }
 
-  .spinChr {
+  .mainChr {
     font-size: 35px;
   }
 

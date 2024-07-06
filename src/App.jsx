@@ -7,7 +7,8 @@ import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
 import { makeCubes } from './components/cube';
-import { spinTitle } from './components/spinTitle';
+import { mainTitle } from './components/mainTitle';
+// import { raiseTitle } from './components/raiseSubTitle';
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
@@ -69,8 +70,8 @@ function App() {
     }, 500)
 
     setTimeout(function () {
-      spinTitle()
-    }, 1000)
+      mainTitle()
+    }, 600)
 
     function grav() {
 
@@ -154,31 +155,55 @@ function App() {
       }, 7000)
     }
 
+    var loopId = 0, makeCubesId = 0, fadeBackId = 0, sepChangeId = 0, gravId = 0, vidDropId = 0
     function loop() {
 
-      setTimeout(function () {
-        makeCubes()
-      }, 10000)
+      stopEffects()
 
-      setTimeout(function () {
+      makeCubesId = setTimeout(function () {
+        makeCubes()
+        makeCubesId = 0
+      }, 7000)
+
+      fadeBackId = setTimeout(function () {
         fadeBack()
+        fadeBackId = 0
       }, 40000)
 
-      setTimeout(function () {
+      sepChangeId = setTimeout(function () {
         sepChange()
+        sepChangeId = 0
       }, 60000)
 
-      setTimeout(function () {
+      gravId = setTimeout(function () {
         grav()
+        gravId = 0
       }, 80000)
 
-      setTimeout(function () {
+      vidDropId = setTimeout(function () {
         vidDrop()
+        vidDropId = 0
       }, 90000)
 
+      loopId = setTimeout(loop, 100000)
+      console.log("bg effects looped")
+
     }
+
+    function stopEffects() {
+      if (makeCubesId !== 0) { clearTimeout(makeCubesId) }
+      if (fadeBackId !== 0) { clearTimeout(fadeBackId) }
+      if (sepChangeId !== 0) { clearTimeout(sepChangeId) }
+      if (gravId !== 0) { clearTimeout(gravId); grav() }
+      if (vidDropId !== 0) { clearTimeout(vidDropId) }
+
+      if (loopId !== 0) { clearTimeout(loopId) }
+      console.log("bg effects stopped")
+    }
+
     loop()
-    setInterval(loop, 100000)
+    window.addEventListener("blur", stopEffects);
+    window.addEventListener("focus", loop);
 
   }, [])
 
@@ -198,7 +223,7 @@ function App() {
         <div id="mainTitle">
 
           <Cube />
-
+          <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
         </div>
         <div id="about" className="row about">
 

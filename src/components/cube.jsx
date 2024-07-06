@@ -36,9 +36,6 @@ const makeCubes = async () => {
             eleObj.removeAttr("id");
             eleObj.attr("id", "cube_" + j);
             eleObj.addClass("cube-clone")
-            if (j !== 0) {
-                // eleObj.find(".heart").remove();
-            }
 
             var r1 = (Math.random())
             var r2 = (Math.random())
@@ -114,22 +111,22 @@ const makeCubes = async () => {
 
             frameLag = timeStamp - lastTimeStamp;
             lastTimeStamp = timeStamp;
-            if ((new Date().getTime() - new Date(cube.startTime).getTime()) < cube.duration) {
+            if ((new Date().getTime() - new Date(cube.startTime).getTime()) < cube.duration && ! document.hidden) {
                 window.requestAnimationFrame(moveElements);
             } else {
                 for (let i in cubes) {
                     var cube = cubes[i]
                     var eleObj = $("#" + cube.id)
-                    // if( i == 0 ){
                     eleObj.remove()
-                    // }
                 }
                 cubes = [];
             }
         } else {
             frameLag = timeStamp - lastTimeStamp;
             lastTimeStamp = timeStamp;
-            window.requestAnimationFrame(moveElements);
+            window.requestAnimationFrame(moveElements)
+           
+            
         }
     }
 

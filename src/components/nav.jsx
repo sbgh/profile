@@ -15,7 +15,10 @@ const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
         
         // console.log( window.location.protocol + '//' + window.location.hostname.split(":")[0] + ':8443' + '/#')
 
-        window.location.href = "https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/'
+        // window.location.target = '_new';
+        // window.location.href = "https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/'
+        window.open("https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/', '_new');
+
     };
 
     return (
