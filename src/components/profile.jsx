@@ -35,33 +35,31 @@ const Profile = () => {
 
     return (
 
-        <div>
-            <div className="profilePicSection">
+        <div className="profilePicSection">
 
-                <Container fluid>
-                    <Row>
-                        <Col className='profilePicCol'>
+        <Container fluid>
+            <Row>
+                <Col className='profilePicCol'>
 
-                            <Row className='profilePicRow'>
-                                <img className="backPic" />
-                                <img src={Pic} className="profilePic" />
-                            </Row>
-                            <Row className="justify-content-md-left">
-
-                                <div className='profileText profileName'><h1>Scott Hurd</h1></div>
-                                <div className='profileText profileTag'><h2>Full stack web developer and System Administrator.</h2></div>
-                                <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
-                            </Row>
-                            <Row className='ProfileBtnRow'>
-                            <a href='https://www.linkedin.com/in/scott-hurd-calgary/' target='_new'><div className='profileBtn liLink'>< FaLinkedin className='profileFa' /></div></a>
-                                <a href='https://github.com/sbgh' target='_new'><div className='profileBtn ghLink'>< FaGithub className='profileFa' /></div></a>
-                            </Row>
-                        </Col>
-
+                    <Row className='profilePicRow'>
+                        <img className="backPic" />
+                        <img src={Pic} className="profilePic" />
                     </Row>
-                </Container>
-            </div>
-        </div>
+                    <Row className="justify-content-md-left">
+
+                        <div className='profileText profileName'><h1>Scott Hurd</h1></div>
+                        <div className='profileText profileTag'><h2>Full stack web developer and System Administrator.</h2></div>
+                        <div className='profileText profileLocation'><p>Calgary, Alberta, Canada</p></div>
+                    </Row>
+                    <Row className='ProfileBtnRow'>
+                    <a href='https://www.linkedin.com/in/scott-hurd-calgary/' target='_new'><div className='profileBtn liLink'>< FaLinkedin className='profileFa' /></div></a>
+                        <a href='https://github.com/sbgh' target='_new'><div className='profileBtn ghLink'>< FaGithub className='profileFa' /></div></a>
+                    </Row>
+                </Col>
+
+            </Row>
+        </Container>
+    </div>
 
     )
 }

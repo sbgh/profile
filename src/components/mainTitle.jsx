@@ -12,7 +12,7 @@ const mainTitle = async () => {
         const subTitleTxt = "IT Services and Solutions"
         const subTitleArr = subTitleTxt.split("")
 
-        const btnRowArr = ["Solutions", "About", "Contact"]
+        const btnRowArr = ["What We Do", "About Us", "Contact Us"]
         const eleScrollArr = ["mainInfo", "mainInfo", "mainInfo"]
 
         for (var CharIn in titleArr) {

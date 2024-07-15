@@ -12,11 +12,9 @@ const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
         { loginButtonClicked() }
     };
     const handledsStackShow = () => {
-        
+
         // console.log( window.location.protocol + '//' + window.location.hostname.split(":")[0] + ':8443' + '/#')
 
-        // window.location.target = '_new';
-        // window.location.href = "https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/'
         window.open("https:" + '//' + window.location.hostname.split(":")[0] + ':8443' + '/', '_new');
 
     };
@@ -39,7 +37,7 @@ const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
                         <Nav.Link href="#" onClick={() => handleSupportShow()}>Support</Nav.Link>
                         <Nav.Link href="#" onClick={() => handleLoginShow()}>Login</Nav.Link>
                         <Nav.Link href="#" onClick={() => handledsStackShow()}>dsStack</Nav.Link>
-                        </Nav>
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

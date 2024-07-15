@@ -25,7 +25,7 @@
 #mainContent {
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 100px);
   /* margin-top: 55px; */
   scrollbar-color: white #919191;
   scroll-behavior: smooth;
@@ -259,6 +259,43 @@ h2 {
   transform: translateX(5000px);
 }
 
+.footerSection {
+  display: flex;
+  /* align-content: space-around; */
+  flex-wrap: wrap;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw);
+  border-top: black solid 1px;
+  /* margin: 0 20px; */
+  background: #f8f9fa;
+}
+
+.footerItem {
+  display: flex;
+  padding: 10px 20px;
+}
+
+.footerItemRight{
+  margin-left: auto;
+}
+
+.footerFa {
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+.footerBtn a {
+  color: white;
+}
+
+.footerItem .footerFa {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: black;
+}
+
 
 #background,
 #backgroundGrav {
@@ -354,8 +391,16 @@ div#vidContainer {
   z-index: 1000;
 }
 
-nav .navbar-brand {
-  /* display: none; */
+.navbar,
+.navbar-default {
+    background:rgb(255, 255, 255)!important;
+}
+.nav-link{
+  color: black !important;
+}
+
+.footerBtn.ghLink {
+  padding: 0 20px;
 }
 
 .nav.show {

@@ -2,17 +2,19 @@
 import { useEffect } from "react"
 import AppNav from './components/nav'
 import Profile from './components/profile'
+import Footer from './components/footer'
 import Info from './components/info'
 import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
 import { makeCubes } from './components/cube';
 import { mainTitle } from './components/mainTitle';
-// import { raiseTitle } from './components/raiseSubTitle';
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
 import Cloud from './assets/Pines_Valley_1280x720.mp4';
+
+import Resume from './assets/Scott_Hurd_Resume.pdf';
 
 import imgs from './components/backgrounds';
 
@@ -223,15 +225,16 @@ function App() {
         <div id="mainTitle">
 
           <Cube />
+          
           <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
         </div>
         <div id="about" className="row about">
 
-          <div id="main" className="col main">
+          {/* <div id="main" className="col main">
 
             <Profile />
 
-          </div>
+          </div> */}
           <div id="mainInfo" className="col main mainInfo">
 
             <Info />
@@ -239,6 +242,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Footer />
 
       <Support show={supportShow} onClose={handleSupportClose} />
       <Login show={loginShow} onClose={handleLoginClose} />
