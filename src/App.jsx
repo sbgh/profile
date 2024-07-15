@@ -18,6 +18,8 @@ import Resume from './assets/Scott_Hurd_Resume.pdf';
 
 import imgs from './components/backgrounds';
 
+import Icon from './assets/ezstack.png';
+
 import { useState } from 'react';
 
 import './App.css'
@@ -30,6 +32,8 @@ function App() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  const iconEle = $($.parseHTML('<link rel="icon" type="image/png" href="' + Icon + '">'))
+  $('head').append(iconEle)
 
   useEffect(() => {
 
@@ -225,7 +229,7 @@ function App() {
         <div id="mainTitle">
 
           <Cube />
-          
+
           <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
         </div>
         <div id="about" className="row about">
