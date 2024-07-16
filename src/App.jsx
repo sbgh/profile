@@ -1,9 +1,10 @@
 
 import { useEffect } from "react"
 import AppNav from './components/nav'
-import Profile from './components/profile'
+// import Profile from './components/profile'
 import Footer from './components/footer'
 import Info from './components/info'
+import Services from './components/services'
 import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
@@ -169,12 +170,12 @@ function App() {
       makeCubesId = setTimeout(function () {
         makeCubes()
         makeCubesId = 0
-      }, 7000)
+      }, 2000)
 
       fadeBackId = setTimeout(function () {
         fadeBack()
         fadeBackId = 0
-      }, 40000)
+      }, 35000)
 
       sepChangeId = setTimeout(function () {
         sepChange()
@@ -232,6 +233,11 @@ function App() {
 
           <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
         </div>
+
+        <div id="services" className="row services">
+          <Services />
+        </div>
+
         <div id="about" className="row about">
 
           {/* <div id="main" className="col main">
@@ -239,6 +245,7 @@ function App() {
             <Profile />
 
           </div> */}
+
           <div id="mainInfo" className="col main mainInfo">
 
             <Info />

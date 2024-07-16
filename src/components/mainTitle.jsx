@@ -13,7 +13,7 @@ const mainTitle = async () => {
         const subTitleArr = subTitleTxt.split("")
 
         const btnRowArr = ["What We Do", "About Us", "Contact Us"]
-        const eleScrollArr = ["mainInfo", "mainInfo", "mainInfo"]
+        const eleScrollArr = ["services", "mainInfo", "mainInfo"]
 
         for (var CharIn in titleArr) {
             titleArr[CharIn] = titleArr[CharIn] === " " ? "&nbsp;" : titleArr[CharIn]

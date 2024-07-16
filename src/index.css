@@ -32,7 +32,7 @@
 }
 
 div#mainTitle {
-  min-height: 100vh;
+  height: calc(100vh - 100px);
   position: relative;
 }
 
@@ -301,7 +301,7 @@ h2 {
 #backgroundGrav {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 100px);
   left: 0;
   top: 0;
   display: flex;
@@ -340,7 +340,7 @@ h2 {
 div#vidContainer {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 100px);
   left: 0;
   top: 0;
   overflow: hidden;
@@ -532,6 +532,29 @@ div#btnRow {
 }
 #mainBtn2{
   background: var(--Yellow);
+}
+
+div#services {
+  margin: 60px 0;
+}
+
+.serviceCategory  p {
+  font-size: 27PX;
+  color: black !important;
+}
+
+.serviceList.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 865px;
+  margin-left: auto;
+    margin-right: auto;
+}
+
+.serviceList  p {
+  max-width: 368px;
+  text-align: center;
 }
 
 @media (max-height: 501px) {
