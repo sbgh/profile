@@ -96,8 +96,10 @@ const mainTitle = async () => {
 
                 $("#mainBtn" + ItemIn).on("click", function () {
 
+                    let thisIn = this.id.replace("mainBtn", "")
+
                     $("#mainContent").animate({
-                        scrollTop: $("#" + eleScrollArr[ItemIn]).offset().top
+                        scrollTop: $("#" + eleScrollArr[thisIn]).offset().top
                     }, 100);
                 });
             }
