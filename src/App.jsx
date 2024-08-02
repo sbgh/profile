@@ -175,24 +175,24 @@ function App() {
       fadeBackId = setTimeout(function () {
         fadeBack()
         fadeBackId = 0
-      }, 35000)
+      }, 25000)
 
       sepChangeId = setTimeout(function () {
         sepChange()
         sepChangeId = 0
-      }, 60000)
+      }, 50000)
 
       gravId = setTimeout(function () {
         grav()
         gravId = 0
-      }, 80000)
+      }, 70000)
 
       vidDropId = setTimeout(function () {
         vidDrop()
         vidDropId = 0
-      }, 90000)
+      }, 80000)
 
-      loopId = setTimeout(loop, 100000)
+      loopId = setTimeout(loop, 90000)
       console.log("bg effects looped")
 
     }
