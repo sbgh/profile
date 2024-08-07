@@ -109,7 +109,7 @@ body {
   place-items: center;
   min-width: 320px;
   height: 100vh;
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
 
 }
 
@@ -266,7 +266,7 @@ h2 {
   justify-content: center;
   position: fixed;
   bottom: 0;
-  width: calc(100vw);
+  width: calc(100vw - 30px);
   border-top: black solid 1px;
   /* margin: 0 20px; */
   background: #f8f9fa;
@@ -572,6 +572,19 @@ p.serviceItemName {
   
 }
 
+.ContactForm {
+  margin: 60px 0;
+  padding: 60px 0;
+}
+
+#contactForm .container {
+  max-width: 620px;
+}
+
+.formInput {
+  margin: 5px;
+}
+
 
 
 @media (max-height: 501px) {
@@ -627,6 +640,10 @@ p.serviceItemName {
     font-size: 35px;
   }
 
+  .raiseChr {
+    font-size: 19px;
+  }
+  
   .carousel.slide {
     height: 364px;
   }

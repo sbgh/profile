@@ -4,6 +4,7 @@ import AppNav from './components/nav'
 // import Profile from './components/profile'
 import Footer from './components/footer'
 import Info from './components/info'
+import ContactForm from './components/contactForm'
 import Services from './components/services'
 import Cube from './components/cube'
 import Support from './components/support'
@@ -40,7 +41,7 @@ function App() {
 
     const vidEle = $($.parseHTML('<div id="vidContainer"><video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video></div>'))
     $("#mainTitle").prepend(vidEle)
-    $("#mainTitle").prepend('<div id="cubeStore"></div><div id="background" class="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
+    $("#mainTitle").prepend('<div id="cubeStore"></div><div id="background" className="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
 
     setTimeout(function () {
       $('.nav').addClass("show")
@@ -251,6 +252,7 @@ function App() {
             <Info />
 
           </div>
+          <ContactForm />
         </div>
       </div>
       <Footer />
