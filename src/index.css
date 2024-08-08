@@ -46,8 +46,8 @@ div#mainTitle {
 #rootMain,
 #mainInfo {
   color: black;
-  border: #d5d5d51f solid 10px;
-  border-radius: 66px;
+  /* border: #d5d5d51f solid 10px; */
+  /* border-radius: 66px; */
   overflow: hidden;
   background-color: rgb(255 255 255);
   margin: 15px;
@@ -55,13 +55,13 @@ div#mainTitle {
   text-align: center;
 }
 
-#main {
+/* #main {
   opacity: 0;
   transition: opacity 1s ease-in, transform 1s ease-out;
   transform: scale(.6);
   min-width: 400px;
   max-width: 400px;
-}
+} */
 
 #mainInfo {
   background-color: #ffffffae;
@@ -72,13 +72,18 @@ div#mainTitle {
   max-width: 400px;
 }
 
-.mainInfo {
-  transition: opacity 1s ease-in, transform 1s ease-out;
-  transform: scale(.6);
+.mainInfo{
+  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+  /* transform: scale(.6); */
   opacity: 0;
   padding: 10px;
   max-width: 600px;
   min-width: 600px;
+}
+
+#contactContainer{
+  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+  opacity: 0;
 }
 
 #main.main.mainShow,
@@ -266,7 +271,7 @@ h2 {
   justify-content: center;
   position: fixed;
   bottom: 0;
-  width: calc(100vw - 30px);
+  width: 100%;
   border-top: black solid 1px;
   /* margin: 0 20px; */
   background: #f8f9fa;
@@ -570,6 +575,11 @@ p.serviceItemName {
   font-size: larger;
   margin: 20px 0 0 0;
   
+}
+
+#serviceCategory, .serviceItemName, .serviceItemDescription{
+  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+  opacity: 0;
 }
 
 .ContactForm {

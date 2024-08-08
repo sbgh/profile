@@ -18,7 +18,14 @@ const Info = () => {
                         <Col className='about'>
                             <Row className='profileText'>
 
-                                <Carousel className='carousel-dark slide' >
+
+
+                            <h1>About</h1>
+                            <p>ezStack Systems is IT professional services. Headquartered in Calgary, Alberta, Canada since 2018, We offer technology solutions for small and medium sized organizations. We can provide skill sets in web app design and development, cloud resource management and automation, enterprise app support and systems administration, dev/ops, test support.</p>
+                            <p>D. Scott Hurd CEO</p>
+
+
+                                {/* <Carousel className='carousel-dark slide' >
                                     <Carousel.Item interval={20000}>
 
                                         <h1>About</h1>
@@ -28,7 +35,6 @@ const Info = () => {
                                     <Carousel.Item interval={10000}>
 
                                         <h1>HIGHLIGHTS OF QUALIFICATIONS/SKILLS </h1>
-                                        {/* <p> */}
                                             <ul>
                                                 <li>IT consultanting</li>
                                                 <li>IT architecture</li>
@@ -39,10 +45,9 @@ const Info = () => {
                                                 <li>Systems administration</li>
                                                 <li>Certified IBM IT Specialist</li>
                                             </ul>
-                                        {/* </p> */}
 
                                     </Carousel.Item>
-                                </Carousel>
+                                </Carousel> */}
                             </Row>
                         </Col>
                     </Row>

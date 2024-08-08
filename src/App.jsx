@@ -48,39 +48,65 @@ function App() {
     }, 2000)
 
 
+    //setup observe on about and contactForm
     let options = {
-      root: document.querySelector("#mainContent"),
+      root: null,
       rootMargin: "0px",
-      threshold: 0.8,
+      threshold: [0, .25, .50, .75, 1.00],
     };
 
     let showMain = function (entries, observer) {
       entries.forEach(entry => {
 
-        if (entry.intersectionRatio > 0) {
-          setTimeout(function () {
-            $('#main').addClass("mainShow")
-          }, 0)
+        // const intersecting = entry.isIntersecting
+        // entry.target.style.backgroundColor = intersecting ? 'blue' : 'orange'
+        entry.target.style.opacity = entry.intersectionRatio
 
-          setTimeout(function () {
-            $('#mainInfo').addClass("mainShow")
-          }, 500)
+        if (entry.intersectionRatio > 0) {
+
         } else {
 
         }
       });
     }
 
-    let observeShowMain = new IntersectionObserver(showMain, options);
-    let target = document.querySelector("#about");
-    setTimeout(function () {
-      observeShowMain.observe(target);
-    }, 500)
+    let observeShowMain = new IntersectionObserver(showMain, options)
 
+    let target = document.querySelector("#mainInfo")
+    observeShowMain.observe(target)
+
+    target = document.querySelector("#contactContainer")
+    observeShowMain.observe(target)
+
+    setTimeout(function () {
+
+      let target = document.querySelector("#serviceCategory")
+      observeShowMain.observe(target)
+
+      target = '.serviceItemName';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
+
+      target = '.serviceItemDescription';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
+
+    }, 1000)
+
+
+
+    //Start splash on landing
     setTimeout(function () {
       mainTitle()
-    }, 600)
+    }, 300)
 
+    //Run background drop 
     function grav() {
 
       $("#background").clone().insertAfter('#background').prop('id', 'backgroundGrav')
@@ -120,6 +146,7 @@ function App() {
 
     }
 
+    //Run background fade 
     function fadeBack() {
       //fade rand background into view
 
@@ -129,20 +156,19 @@ function App() {
       $("#background").css({
         "transition": "opacity 8s",
         "opacity": ".7"
-
       })
 
       $("#background>img").addClass("zoomed")
       // $("#backgroundGrav>img")
     }
 
+    //Run background color filter 
     function sepChange() {
       //change background filter
       $("#background>img").addClass("background-change")
-
-      // $("#backgroundGrav>img.zoomed").css({"transform": "scale(1.1)"})
     }
 
+    //fade in and out vid
     function vidDrop() {
 
       $("#dropVid").addClass('dropVid-changed')
@@ -163,6 +189,7 @@ function App() {
       }, 7000)
     }
 
+    //keep track of all ui effect ids (timeouts)
     var loopId = 0, makeCubesId = 0, fadeBackId = 0, sepChangeId = 0, gravId = 0, vidDropId = 0
     function loop() {
 
@@ -198,6 +225,7 @@ function App() {
 
     }
 
+    //abort effects 
     function stopEffects() {
       if (makeCubesId !== 0) { clearTimeout(makeCubesId) }
       if (fadeBackId !== 0) { clearTimeout(fadeBackId) }
@@ -209,9 +237,13 @@ function App() {
       console.log("bg effects stopped")
     }
 
+    //call main effects loop on startup
     loop()
-    window.addEventListener("blur", stopEffects);
-    window.addEventListener("focus", loop);
+
+    //abort loop effects if window loses focus. 
+    window.addEventListener("blur", stopEffects)
+    //start loop if window back in focus
+    window.addEventListener("focus", loop)
 
   }, [])
 
