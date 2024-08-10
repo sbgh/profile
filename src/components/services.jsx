@@ -27,18 +27,41 @@ servicesArrays.push(['Automation and Scripting',
 
 setTimeout(function (title, servicesArrays) {
 
-    var serviceEle = $($.parseHTML('<div id="serviceCategory" class="serviceCategory row"></div>'))
+    var x = Math.random() * 2 - 1
+    var y = Math.random() * 2 - 1
+    var r = Math.random() * 2 - 1
+
+    var eWidth = $(window).width() * x / 2
+    var eHeight = $(window).height() * y / 2
+
+    var serviceEle = $($.parseHTML('<div id="serviceCategory" class="serviceCategory row flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '></div>'))
+
     serviceEle.append('<p>' + title + '</p>')
+
     $('#servicesCol').append(serviceEle)
+
+    // $('#serviceCategory p').css({
+    //     "transform": "translate(" + (eWidth).toString() + "px, " + (eHeight).toString() + "px) scale(0) rotate3d(" + (x).toString() + ", " + (y).toString() + ", " + (r).toString() + ", " + (r * 720).toString() + "deg)"
+    // })
 
     serviceEle = $($.parseHTML('<div id="serviceList" class="serviceList row"></div>'))
     $('#servicesCol').append(serviceEle)
 
-    for (let x in servicesArrays) {
-        const name = servicesArrays[x][0]
-        const desc = servicesArrays[x][1]
+    for (let ind in servicesArrays) {
+        const name = servicesArrays[ind][0]
+        const desc = servicesArrays[ind][1]
 
-        $("#serviceList").append('<div class="serviceItem"><p class="serviceItemName">' + name + '</p><p class="serviceItemDescription">' + desc + '</p></div>')
+        $("#serviceList").append('<div class="serviceItem'+ind+'"></div>')
+
+        x = Math.random() * 2 - 1
+        y = Math.random() * 2 - 1
+        r = Math.random() * 2 - 1
+        $(".serviceItem"+ind).append('<div class="serviceItemName flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><p>' + name + '</p></div>')
+
+        x = Math.random() * 2 - 1
+        y = Math.random() * 2 - 1
+        r = Math.random() * 2 - 1
+        $(".serviceItem"+ind).append('<div class="serviceItemDescription flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><p>' + desc + '</p></div>')
     }
 
 }, 200, title, servicesArrays)
@@ -50,7 +73,8 @@ const Services = () => {
             <div className="servicesSection">
                 <Container fluid>
                     <Row>
-                        <Col id='servicesCol' className='servicesCol'></Col>
+                        <Col id='servicesCol' className='servicesCol'>
+                        </Col>
                     </Row>
                 </Container>
             </div>

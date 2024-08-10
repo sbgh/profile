@@ -51,8 +51,8 @@ function App() {
     //setup observe on about and contactForm
     let options = {
       root: null,
-      rootMargin: "0px",
-      threshold: [0, .25, .50, .75, 1.00],
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.00],
+      rootMargin: '0% 0% -10% 0%',
     };
 
     let showMain = function (entries, observer) {
@@ -60,7 +60,26 @@ function App() {
 
         // const intersecting = entry.isIntersecting
         // entry.target.style.backgroundColor = intersecting ? 'blue' : 'orange'
-        entry.target.style.opacity = entry.intersectionRatio
+
+        const ratio = entry.intersectionRatio
+        entry.target.style.opacity = ratio
+
+        let ele = entry.target
+        if ($(ele).hasClass("flutter")) {
+          const x = $(ele).attr("data-x")
+          const y = $(ele).attr("data-y")
+          const r = $(ele).attr("data-r")
+
+          var eWidth = $(window).width() * x / 2 * (1 - ratio)
+          var eHeight = $(window).height() * y / 2 * (1 - ratio)
+          var rotate = r * 720 * (1 - ratio)
+
+          $(ele).find("p").css(
+            {
+              "transform": "translate(" + (eWidth).toString() + "px, " + (eHeight).toString() + "px) scale(" + ratio + ")  rotate3d(" + (Math.abs(x)).toString() + ", " + (Math.abs(y)).toString() + ", " + (Math.abs(r)).toString() + ", " + (rotate).toString() + "deg)",
+              "opacity": ratio
+            })
+        }
 
         if (entry.intersectionRatio > 0) {
 
