@@ -23,26 +23,25 @@ servicesArrays.push(['Infrastructure Consulting',
 servicesArrays.push(['Automation and Scripting',
     'We have lots of experience creating detailed code to handle complex tasks. We\'ll make your business processes go from pain to perfect. '])
 
-
-
 setTimeout(function (title, servicesArrays) {
 
     var x = Math.random() * 2 - 1
     var y = Math.random() * 2 - 1
     var r = Math.random() * 2 - 1
 
-    var eWidth = $(window).width() * x / 2
-    var eHeight = $(window).height() * y / 2
-
-    var serviceEle = $($.parseHTML('<div id="serviceCategory" class="serviceCategory row flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '></div>'))
-
-    serviceEle.append('<p>' + title + '</p>')
+    var serviceEle = $($.parseHTML('<div id="serviceCategory" class="serviceCategoryRow"></div>'))
 
     $('#servicesCol').append(serviceEle)
+    
+    for(let n in title.split(" ")){
+        x = Math.random() * 2 - 1
+        y = Math.random() * 2 - 1
+        r = Math.random() * 2 - 1
+        let wrd=title.split(" ")[n]
+        wrd = wrd +  "&nbsp;" 
+        $("#serviceCategory" ).append('<div class="serviceCategory flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><span>' + wrd + '</span></div>')    
+    }
 
-    // $('#serviceCategory p').css({
-    //     "transform": "translate(" + (eWidth).toString() + "px, " + (eHeight).toString() + "px) scale(0) rotate3d(" + (x).toString() + ", " + (y).toString() + ", " + (r).toString() + ", " + (r * 720).toString() + "deg)"
-    // })
 
     serviceEle = $($.parseHTML('<div id="serviceList" class="serviceList row"></div>'))
     $('#servicesCol').append(serviceEle)
@@ -51,17 +50,25 @@ setTimeout(function (title, servicesArrays) {
         const name = servicesArrays[ind][0]
         const desc = servicesArrays[ind][1]
 
-        $("#serviceList").append('<div class="serviceItem'+ind+'"></div>')
+        $("#serviceList").append('<div class="serviceItem serviceItem'+ind+'"><div class="serviceItemNameHolder"></div><div class="serviceItemDescHolder"></div></div>')
 
-        x = Math.random() * 2 - 1
-        y = Math.random() * 2 - 1
-        r = Math.random() * 2 - 1
-        $(".serviceItem"+ind).append('<div class="serviceItemName flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><p>' + name + '</p></div>')
+        for(let n in name.split(" ")){
+            x = Math.random() * 2 - 1
+            y = Math.random() * 2 - 1
+            r = Math.random() * 2 - 1
+            let wrd=name.split(" ")[n]
+            wrd = wrd +  "&nbsp;" 
+            $(".serviceItem"+ind+" .serviceItemNameHolder" ).append('<span class="serviceItemName flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><span>' + wrd + '</span></span>')    
+        }
 
-        x = Math.random() * 2 - 1
-        y = Math.random() * 2 - 1
-        r = Math.random() * 2 - 1
-        $(".serviceItem"+ind).append('<div class="serviceItemDescription flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><p>' + desc + '</p></div>')
+        for(let n in desc.split(" ")){
+            x = Math.random() * 2 - 1
+            y = Math.random() * 2 - 1
+            r = Math.random() * 2 - 1
+            let wrd=desc.split(" ")[n]
+            wrd = wrd +  "&nbsp;" 
+            $(".serviceItem"+ind+" .serviceItemDescHolder").append('<span class="serviceItemDescription flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><span>' + wrd + '</span></span>')
+        }
     }
 
 }, 200, title, servicesArrays)

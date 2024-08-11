@@ -6,11 +6,13 @@ import m4 from '../assets/backgrounds/Rocky-mountains-in-Canada.jpg';
 import m5 from '../assets/backgrounds/winter-landscape-mountains-snow-forest-alps.jpg';
 import m6 from '../assets/backgrounds/winter-snow-sun-trees-forest-ice.jpg';
 
-export default [
+const imgArray = [
     m1,
     m2,
     m3,
     m4,
     m5,
     m6
-];
+]
+
+export default imgArray ;

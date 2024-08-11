@@ -73,7 +73,7 @@ div#mainTitle {
 }
 
 .mainInfo{
-  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+  transition: opacity 0.5s ease-in, transform 1s ease-out;
   /* transform: scale(.6); */
   opacity: 0;
   padding: 10px;
@@ -82,7 +82,7 @@ div#mainTitle {
 }
 
 #contactContainer{
-  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+  transition: opacity 0.5s ease-in, transform 1s ease-out;
   opacity: 0;
 }
 
@@ -551,7 +551,7 @@ div#services {
 
 }
 
-.serviceCategory  p {
+.serviceCategory  span {
   font-size: 27PX;
   color: black !important;
 }
@@ -568,18 +568,27 @@ div#services {
 .serviceList  div {
   max-width: 368px;
   text-align: center;
+  display: inline-block;
 }
 
-.serviceItemName p {
+.serviceItemName span {
   font-weight: 700;
   font-size: larger;
   margin: 20px 0 0 0;
   
 }
 
-#serviceCategory, .serviceItemName, .serviceItemDescription{
-  transition: opacity 0.5s ease-in .5s, transform 1s ease-out;
+.serviceCategory, .serviceItemName, .serviceItemDescription{
+  transition: opacity 0.5s ease-in, transform 1s ease-out;
   opacity: 0;
+}
+
+.serviceItem {
+  padding: 10px;
+}
+
+.serviceCategory.flutter {
+  display: inline-block;
 }
 
 .ContactForm {
@@ -595,8 +604,10 @@ div#services {
   margin: 5px;
 }
 
-.flutter p{
+.flutter span{
   transition: opacity 1s ease-in, transform 1s ease-out;
+  display: inline-block;
+  margin: 0;
 }
 
 

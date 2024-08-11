@@ -9,20 +9,20 @@ import Services from './components/services'
 import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
-import { makeCubes } from './components/cube';
-import { mainTitle } from './components/mainTitle';
+import { makeCubes } from './components/cube'
+import { mainTitle } from './components/mainTitle'
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
-import Cloud from './assets/Pines_Valley_1280x720.mp4';
+import Cloud from './assets/Pines_Valley_1280x720.mp4'
 
-import Resume from './assets/Scott_Hurd_Resume.pdf';
+import Resume from './assets/Scott_Hurd_Resume.pdf'
 
-import imgs from './components/backgrounds';
+import imgs from './components/backgrounds'
 
-import Icon from './assets/ezstack.png';
+import Icon from './assets/ezstack.png'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 import './App.css'
 
@@ -52,16 +52,13 @@ function App() {
     let options = {
       root: null,
       threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.00],
-      rootMargin: '0% 0% -10% 0%',
+      rootMargin: '-8% 0% -10% 0%',
     };
 
     let showMain = function (entries, observer) {
       entries.forEach(entry => {
 
-        // const intersecting = entry.isIntersecting
-        // entry.target.style.backgroundColor = intersecting ? 'blue' : 'orange'
-
-        const ratio = entry.intersectionRatio
+        const ratio = entry.intersectionRatio //entry.isIntersecting
         entry.target.style.opacity = ratio
 
         let ele = entry.target
@@ -70,20 +67,22 @@ function App() {
           const y = $(ele).attr("data-y")
           const r = $(ele).attr("data-r")
 
-          var eWidth = $(window).width() * x / 2 * (1 - ratio)
-          var eHeight = $(window).height() * y / 2 * (1 - ratio)
-          var rotate = r * 720 * (1 - ratio)
+          var eWidth = $(window).width() * x / 10 * (1 - ratio)
+          var eHeight = $(window).height() * y / 10 * (1 - ratio)
+          var rotate = r * 180 * (1 - ratio)
 
-          $(ele).find("p").css(
+          $(ele).find("span").css(
             {
               "transform": "translate(" + (eWidth).toString() + "px, " + (eHeight).toString() + "px) scale(" + ratio + ")  rotate3d(" + (Math.abs(x)).toString() + ", " + (Math.abs(y)).toString() + ", " + (Math.abs(r)).toString() + ", " + (rotate).toString() + "deg)",
               "opacity": ratio
             })
-        }
 
-        if (entry.intersectionRatio > 0) {
-
-        } else {
+          if (entry.intersectionRatio > .90) {
+              let x = Math.random() * 2 - 1
+              let y = Math.random() * 2 - 1
+              $(ele).attr("data-x", x)
+              $(ele).attr("data-y", y)
+          }
 
         }
       });
@@ -99,8 +98,12 @@ function App() {
 
     setTimeout(function () {
 
-      let target = document.querySelector("#serviceCategory")
-      observeShowMain.observe(target)
+      let target = '.serviceCategory';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
 
       target = '.serviceItemName';
       document.querySelectorAll(target).forEach((i) => {
@@ -291,12 +294,6 @@ function App() {
         </div>
 
         <div id="about" className="row about">
-
-          {/* <div id="main" className="col main">
-
-            <Profile />
-
-          </div> */}
 
           <div id="mainInfo" className="col main mainInfo">
 
