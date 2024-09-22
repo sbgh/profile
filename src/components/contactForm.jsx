@@ -45,7 +45,7 @@ const ContactForm = () => {
         <div className='row'>
           <div className='col-12 text-center'>
             <div className='contactForm'>
-    <p>Please feel free to contact us through the form below. We are available for quotes and we love to talk about technology.</p>
+    <p>Please feel free to contact us through <a href="email:ezstack.systems@gmail.com">email</a> or the form below. We are available for quotes and we love to talk about technology.</p>
               <form
                 id='contact-form'
               >
