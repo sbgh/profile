@@ -9,7 +9,7 @@ const mainTitle = async () => {
         const titleTxt = "ezStack Systems"
         const titleArr = titleTxt.split("")
 
-        const subTitleTxt = "IT Services and Solutions"
+        const subTitleTxt = "Full Stack Web Development and eCommerce"
         const subTitleArr = subTitleTxt.split("")
 
         const btnRowArr = ["What We Do", "About Us", "Contact Us"]

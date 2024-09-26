@@ -6,6 +6,7 @@ import Footer from './components/footer'
 import Info from './components/info'
 import ContactForm from './components/contactForm'
 import Services from './components/services'
+import Tech from './components/tech'
 import Cube from './components/cube'
 import Support from './components/support'
 import Login from './components/login'
@@ -99,6 +100,13 @@ function App() {
     setTimeout(function () {
 
       let target = '.serviceCategory';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
+
+      target = '.serviceItemIcon';
       document.querySelectorAll(target).forEach((i) => {
         if (i) {
           observeShowMain.observe(i);
@@ -213,6 +221,7 @@ function App() {
 
     //keep track of all ui effect ids (timeouts)
     var loopId = 0, makeCubesId = 0, fadeBackId = 0, sepChangeId = 0, gravId = 0, vidDropId = 0
+    //main splash page effect loop.
     function loop() {
 
       stopEffects()
@@ -291,6 +300,10 @@ function App() {
 
         <div id="services" className="row services">
           <Services />
+        </div>
+
+        <div id="tech" className="row tech">
+          {/* <Tech /> */}
         </div>
 
         <div id="about" className="row about">
