@@ -34,18 +34,29 @@ const mainTitle = async () => {
                 "text-shadow": "#33333300 -1px -1px 14px"
             })
         }
-
+        
+        var words = [$($.parseHTML("<span class='word'></span>"))]
         for (var CharIn in subTitleArr) {
-            subTitleArr[CharIn] = subTitleArr[CharIn] === " " ? "&nbsp;" : subTitleArr[CharIn]
-            const chrHTML = "<div class='raiseChr' id='raiseChr" + CharIn + "'>" + subTitleArr[CharIn] + "</div>"
-            const charEle = $($.parseHTML(chrHTML))
+            if (subTitleArr[CharIn] === " ") {
+                words.push($($.parseHTML("<span class='word'></span>")))
+            } else {
 
-            $("#subTitle").append(charEle)
-            $("#raiseChr" + CharIn).css({
-                "transform":
-                    "perspective(1000px) translate3d(" + (0).toString() + "px, " + (0).toString() + "px, " + (-10000).toString() + "px)  ",
-                "text-shadow": "#33333300 -1px -1px 7px"
-            })
+                const chrHTML = "<div class='raiseChr' id='raiseChr" + CharIn + "'>" + subTitleArr[CharIn] + "</div>"
+                const charEle = $($.parseHTML(chrHTML))
+
+                $(charEle).css({
+                    "transform":
+                        "perspective(1000px) translate3d(" + (0).toString() + "px, " + (0).toString() + "px, " + (-10000).toString() + "px)  ",
+                    "text-shadow": 
+                        "#33333300 -1px -1px 7px"
+                })
+                
+                words[words.length - 1].append(charEle)
+            }
+        }
+        for (var word in words) {
+            $("#subTitle").append(words[word])
+            $("#subTitle").append("&nbsp;")
         }
 
         for (var ItemIn in btnRowArr) {

@@ -26,7 +26,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 100px);
-  /* margin-top: 55px; */
   scrollbar-color: white #919191;
   scroll-behavior: smooth;
 }
@@ -34,6 +33,15 @@
 div#mainTitle {
   height: calc(100vh - 100px);
   position: relative;
+}
+
+div#subTitle {
+  font-size: 35px;
+}
+
+.word{
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .about {
@@ -739,6 +747,10 @@ div#techsList {
   }
 
   .raiseChr {
+    font-size: 19px;
+  }
+
+  div#subTitle {
     font-size: 19px;
   }
   
