@@ -33,7 +33,6 @@ body{
   scrollbar-color: white #919191;
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
-  scroll-padding: -100px;
 }
 
 div#mainTitle {
@@ -625,7 +624,7 @@ div#techs {
   justify-content: center;
   flex-direction: column;
   position: relative; */
-  padding-bottom: 120px;
+  padding: 13vh 0;
 }
 
 div#techsTitle {
@@ -642,8 +641,8 @@ div#techsTitle {
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   white-space: nowrap;
-  width: 80vw;
-  margin: 0 auto; */
+  width: 80vw;*/
+  margin: 5vh 0; 
 }
 
 /* .techItemHolder {
@@ -658,10 +657,10 @@ div#techsTitle {
 .techItemHolder {
   /* display: flex; */
   /* flex-direction: column; */
-  /* margin: 40px 40px 0; */
+  margin: 4vh 0;
   /* width: 30vw; */
   /* height: 18vw; */
-  /* scroll-snap-align: center; */
+  scroll-snap-align: center;
   /* overscroll-behavior-x: contain; */
 }
 
@@ -670,12 +669,15 @@ div#techsTitle {
 .techItem {
   /* transform: perspective(50px) translate3d(0px, 0px, 0px);
   transition: transform 1s ease-out */
+  max-width: 80em;
+  margin: 0 auto;
 }
 
 .techItemName {
   text-align: left;
   font-family: Inter, sans-serif;
   padding: 1vw 2vw;
+  font-size: 1.4em;
 }
 .techItemText {
   /* min-width: 55%; */
@@ -696,15 +698,21 @@ div#techsTitle {
 }
 
 .techItemImg img {
-  height: 15vh;
-  margin: 3vh 0;
-  scroll-snap-align: center;
+  width: 100%;
+  /* margin: 3vh 0; */
+  /* scroll-snap-align: center;
   transform: perspective(50px) translate3d(0px, 0px, 0px);
-  transition: transform 1s cubic-bezier(0.68, 1.34, 0.58, 1);
+  transition: transform 1s cubic-bezier(0.68, 1.34, 0.58, 1); */
 }
 
 .techItemImg img.scrollsnapSelected {
-  transform: perspective(50px) translate3d(0px, -10px, 28px);
+  /* transform: perspective(50px) translate3d(0px, -10px, 28px); */
+}
+
+.techItemLinks {
+  font-family: Inter, sans-serif;
+  text-align: left;
+  padding: 1vw 2vw;
 }
 
 
@@ -712,12 +720,12 @@ div#techsTitle {
 
 
 .ContactForm {
-  margin: 6vw 0;
+  margin: 6vh 0 8vh;
   padding: 5vw 0;
 }
 
 #contactForm .container {
-  max-width: 50vw;
+  max-width: 60em;
 }
 
 .formInput {

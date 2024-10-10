@@ -48,7 +48,6 @@ function App() {
       $('.nav').addClass("show")
     }, 2000)
 
-
     //setup observe on about and contactForm
     let options = {
       root: null,
