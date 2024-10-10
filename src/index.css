@@ -22,12 +22,18 @@
   z-index: 10;
 }
 
+body{
+  overscroll-behavior-x: none;
+}
+
 #mainContent {
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 100px);
   scrollbar-color: white #919191;
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding: -100px;
 }
 
 div#mainTitle {
@@ -559,27 +565,27 @@ div#services {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 90%;
+  width: 70%;
   margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
+    margin-top: 5vh;
 }
 
 .serviceList > div {
-  max-width: 45%;
-  min-width: 300px;
+  max-width: 26em;
+  min-width: 20vw;
   text-align: left;
-  margin: 30px 0 0;
+  margin: 3vh 0 0;
 }
 
 .serviceItemNameHolder {
-  margin-top: 20px;
+  margin-top: 2vh;
 }
 
 .serviceItemName span {
   font-weight: 700;
   font-size: larger;
-  margin: 20px 0 0 0;
+  margin: 2vw 0 0 0;
   
 }
 
@@ -592,7 +598,7 @@ div#services {
 }
 
 .serviceItem {
-  padding: 10px;
+  padding: 1vw;
 }
 
 .serviceCategory.flutter {
@@ -612,13 +618,13 @@ div#services {
 }
 
 div#techs {
-  min-height: 200px;
+  /* min-height: 200px; */
   background-color: #ffffff;
   color: #000000;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   flex-direction: column;
-  position: relative;
+  position: relative; */
   padding-bottom: 120px;
 }
 
@@ -628,60 +634,94 @@ div#techsTitle {
   text-align: center;
 }
 
-div#techsList {
-  /* background-color: #000000; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, min(100%/1, max(301px, 100%/4))));
-  grid-template-rows: auto;
-  grid-gap: 44px; */
-  justify-content: center;
-  padding: 60px 0;
+.techsList {
+  display: flex;
+    flex-direction: column;
+  /* padding: 60px 0;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  width: 80vw;
+  margin: 0 auto; */
 }
 
+/* .techItemHolder {
+  display: inline-block;
+  margin: 40px 40px 0;
+  width: 30vw;
+  height: 18vw;
+  scroll-snap-align: center;
+  overscroll-behavior-x: contain;
+} */
+
+.techItemHolder {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* margin: 40px 40px 0; */
+  /* width: 30vw; */
+  /* height: 18vw; */
+  /* scroll-snap-align: center; */
+  /* overscroll-behavior-x: contain; */
+}
+
+
+
 .techItem {
-  display: flex;
-  margin: 40px 10px 0;
+  /* transform: perspective(50px) translate3d(0px, 0px, 0px);
+  transition: transform 1s ease-out */
 }
 
 .techItemName {
   text-align: left;
   font-family: Inter, sans-serif;
-  padding: 10px 20px;
+  padding: 1vw 2vw;
 }
 .techItemText {
   /* min-width: 55%; */
 }
 
 .techItemDesc {
-  /* font-size: 16px; */
-  /* width: 40%; */
   font-family: Inter, sans-serif;
   text-align: left;
-  padding: 10px 20px;
+  padding: 1vw 2vw;
 }
 
 .techItemImg {
-  /* height: 200px; */
-  /* width: 40%; */
-  min-height: 200px;
-  /* margin: 2% 2%; */
-  border-radius: 20px;
-  box-shadow: 0px 0px 21px 20px rgba(0, 0, 0, 0.1);
-  background-size: cover;
-  background-position: center;
+  /* height: 100%; */
+  border-radius: .5vw;
+  /* box-shadow: 0px 0px 21px 20px rgba(0, 0, 0, 0.1); */
+  /* background-size: cover;
+  background-position: center; */
 }
 
+.techItemImg img {
+  height: 15vh;
+  margin: 3vh 0;
+  scroll-snap-align: center;
+  transform: perspective(50px) translate3d(0px, 0px, 0px);
+  transition: transform 1s cubic-bezier(0.68, 1.34, 0.58, 1);
+}
+
+.techItemImg img.scrollsnapSelected {
+  transform: perspective(50px) translate3d(0px, -10px, 28px);
+}
+
+
+
+
+
 .ContactForm {
-  margin: 60px 0;
-  padding: 60px 0;
+  margin: 6vw 0;
+  padding: 5vw 0;
 }
 
 #contactForm .container {
-  max-width: 620px;
+  max-width: 50vw;
 }
 
 .formInput {
-  margin: 5px;
+  margin: 1vw;
 }
 
 .flutter span{
@@ -751,11 +791,11 @@ div#techsList {
   }
 
   div#subTitle {
-    font-size: 19px;
+    font-size: 3vh;
   }
-  
-  .carousel.slide {
-    height: 364px;
+
+  .serviceList.row {
+    width: 100%;
   }
 
 }

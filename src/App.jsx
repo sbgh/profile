@@ -22,7 +22,7 @@ import Resume from './assets/Scott_Hurd_Resume.pdf'
 import imgs from './components/backgrounds'
 
 import Icon from './assets/ezstack.png'
-
+ 
 import { useState } from 'react'
 
 import './App.css'
@@ -128,8 +128,6 @@ function App() {
       });
 
     }, 1000)
-
-
 
     //Start splash on landing
     setTimeout(function () {
@@ -290,7 +288,7 @@ function App() {
     <>
       <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
 
-      <div id="mainContent">
+      <div id="mainContent" className="scroller">
         <div id="mainTitle">
 
           <Cube />
@@ -303,7 +301,7 @@ function App() {
         </div>
 
         <div id="tech" className="row tech">
-          {/* <Tech /> */}
+          <Tech /> 
         </div>
 
         <div id="about" className="row about">
