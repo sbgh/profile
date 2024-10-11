@@ -625,12 +625,52 @@ div#techs {
   flex-direction: column;
   position: relative; */
   padding: 13vh 0;
+  box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,0.75);
+  transition: background-color 1s, color 1s, box-shadow 1s;
+  position: relative;
+  a{
+    font-size: 20px;
+  }
+}
+
+div#techs.scrollsnapSelected {
+  background-color: #000000;
+  color: #ffffff;
+  /* box-shadow: inset 0px 38px 52px -18px rgba(0,0,0,0.75); */
+  a {
+    color: #9095ff;
+  }
+}
+
+div#techBack {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+}
+
+.techBack {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+  background-position: center;
+  background-size: 1000%;
+}
+
+.techBackGlass{
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  backdrop-filter: blur(14px);
 }
 
 div#techsTitle {
   font-size: 2.25rem;
   line-height: 2.5rem;
   text-align: center;
+  position: relative;
 }
 
 .techsList {
@@ -643,6 +683,7 @@ div#techsTitle {
   white-space: nowrap;
   width: 80vw;*/
   margin: 5vh 0; 
+  position: relative;
 }
 
 /* .techItemHolder {
