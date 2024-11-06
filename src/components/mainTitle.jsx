@@ -6,14 +6,19 @@ const mainTitle = async () => {
 
     function setupSpinTitle() {
 
+        $("#topTitle").html('')
+        $("#subTitle").html('')
+        $("#btnRow").html('')
+
         const titleTxt = "ezStack Systems"
         const titleArr = titleTxt.split("")
 
-        const subTitleTxt = "Full Stack Web Development and eCommerce"
+        const subTitleTxt = "Web Design, Development and eCommerce"
         const subTitleArr = subTitleTxt.split("")
 
         const btnRowArr = ["What We Do", "About Us", "Contact Us"]
         const eleScrollArr = ["services", "mainInfo", "contactForm"]
+        const eleScrollOffset = [-22, 0, 0]
 
         for (var CharIn in titleArr) {
             titleArr[CharIn] = titleArr[CharIn] === " " ? "&nbsp;" : titleArr[CharIn]
@@ -110,8 +115,8 @@ const mainTitle = async () => {
                     let thisIn = this.id.replace("mainBtn", "")
 
                     $("#mainContent").animate({
-                        scrollTop: $("#" + eleScrollArr[thisIn]).offset().top
-                    }, 100);
+                        scrollTop: $("#" + eleScrollArr[thisIn]).offset().top + eleScrollOffset[thisIn]
+                    }, 300);
                 });
             }
         }, 7000)

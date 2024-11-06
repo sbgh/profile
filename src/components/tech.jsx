@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const title = 'These are some of the projects that we have worked on'
+const title = 'Here are some of the projects that we have worked on'
 const techsList = `
 WordPress Custom Theme (Professional Services)
 Stylish WordPress theme with hand coded 3D effects and responsive design. Plugins include Advanced Custom Fields for content management and WP Mail SMTP for online messaging.
@@ -43,9 +43,10 @@ setTimeout(function () {
             let sName = twoDeeArr[x][0]
             let sDesc = twoDeeArr[x][1]
             let slink = twoDeeArr[x][2]
-            let sImg = snaps[x]
+            let sImg = snaps[0][x]
+            // let sVid = snaps[1][x] ? snaps[1][x] : ''
 
-            const itemHTML = "<div idx='" + x + "' class='techItemHolder'><div class='row techItem'><div class='col-sm-12 col-md-6 techItemText'></div></div></div>"
+            const itemHTML = "<div idx='" + x + "' class='techItemHolder techItemSnap'><div class='row techItem'><div class='col-sm-12 col-md-6 techItemText'></div></div></div>"
 
             const itemEle = $($.parseHTML(itemHTML))
 
@@ -67,51 +68,72 @@ setTimeout(function () {
 
 
             const imgOb = $($.parseHTML("<img idx='" + x + "' src='" + sImg + "' alt='Screen shot:" + sName + "' />"))
-            itemEle.find(".techItemImg").append(imgOb)
+            const vidOb = $($.parseHTML("<video autoplay loop muted src=''  />"))
+            itemEle.find(".techItemImg").append(imgOb).append(vidOb)
 
             $("#techsList").append(itemEle)
             $("#techBack").append("<div class='techBack' style='background-image:url(" + sImg + ")'></div>")
-
-            $(".techBack").each(function (index) {
-                $(".techBack").eq(index).css({ "opacity": "0" })
-            })
-
         }
 
         $("#techBack").append("<div class='techBackGlass'></div>")
 
         var scroller = document.querySelector(".scroller")
         scroller.addEventListener('scrollsnapchange', event => {
-
             if (event.snapTargetBlock) {
                 let thisIdx = event.snapTargetBlock.attributes["idx"].value
+                let thisTarget = event.snapTargetBlock
                 console.log(thisIdx);
 
-                $("#techs").addClass("scrollsnapSelected")
+                $(".techItemHolder ").each(function (index) {
+                    if (index.toString() !== thisIdx) {
+                        $(".techItemHolder ").eq(index).removeClass("techChange").addClass("techItemSnap")
+                        $(".techItemHolder ").eq(index).find("video")[0].pause()
+                        $(".techItemHolder ").eq(index).find("video")[0].currentTime = 0
+                    }else{
+                        let sVid = snaps[1][thisIdx] ? snaps[1][thisIdx] : ''
+                        $(thisTarget).find("video").attr("src", sVid)
+                        $(thisTarget).find("video")[0].play();
+                    }
+
+                })
+                $(thisTarget).addClass("techChange").removeClass("techItemSnap")
+
 
                 $(".techBack").each(function (index) {
-                    $(".techBack").eq(index).css({ "opacity": "0" })
+                    $(".techBack").eq(index).removeClass("techChange")
                 })
 
-                $(".techBack").eq(thisIdx).css({ "opacity": ".3" })
+                $(".techBack").eq(thisIdx).addClass("techChange")
 
-                // $(".techItemHolder img").each(function (index) {
-                //     let thisIdx = event.snapTargetBlock.attributes["idx"].value
-                //     if (thisIdx == index.toString()) {
-                //         $(event.snapTargetBlock).addClass("scrollsnapSelected")
-                //     } else {
-                //         $(".techItemHolder img").eq(index).removeClass("scrollsnapSelected")
-                //     }
-                // });
+                $(".techBackGlass").css({ "backdrop-filter": "grayscale(.6" })
+
+                
             }
-
         });
 
-        //setup observe on about and contactForm
+        scroller.addEventListener('scrollsnapchanging', event => {
+            if (event.snapTargetBlock) {
+                let thisIdx = event.snapTargetBlock.attributes["idx"].value
+                let thisTarget = event.snapTargetBlock
+                // console.log(thisIdx);
+
+                $(".techItemHolder ").each(function (index) {
+                    $(".techItemHolder ").eq(index).removeClass("techChanging")
+                })
+                $(thisTarget).addClass("techChanging")
+
+                $(".techBack").each(function (index) {
+                    $(".techBack").eq(index).removeClass("techChanging")
+                })
+                $(".techBack").eq(thisIdx).addClass("techChanging")
+            }
+        });
+
+        //setup observe on #techs to turn off effects if scrolled out
         let options = {
             root: null,
-            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.00],
-            rootMargin: '-8% 0% -10% 0%',
+            threshold: [0, 0.1, 0.2],
+            rootMargin: '-10% 0% -10% 0%',
         };
 
         let showTechs = function (entries, observer) {
@@ -122,8 +144,10 @@ setTimeout(function () {
                 //   let ele = entry.target
                 if (ratio < .2) {
                     $("#techs").removeClass("scrollsnapSelected")
+                    // $(".techBackGlass").css({"backdrop-filter": "blur(0px)"})
                     $(".techBack").each(function (index) {
-                        $(".techBack").eq(index).css({ "opacity": "0" })
+                        $(".techBack").eq(index).removeClass("techChange").removeClass("techChanging")
+                        $(".techItemHolder ").eq(index).removeClass("techChange").removeClass("techChanging").addClass("techItemSnap")
                     })
                 }
 
@@ -146,7 +170,6 @@ const Tech = () => {
     return (
         <div>
             <div id="techs" className="techs">
-                <div id="techBack" ></div>
                 <div id="techsTitle" className="techsTitle"></div>
                 <div id="techsList" className="techsList"></div>
             </div>

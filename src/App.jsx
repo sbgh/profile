@@ -1,13 +1,13 @@
 
 import { useEffect } from "react"
 import AppNav from './components/nav'
-// import Profile from './components/profile'
 import Footer from './components/footer'
 import Info from './components/info'
 import ContactForm from './components/contactForm'
 import Services from './components/services'
 import Tech from './components/tech'
 import Cube from './components/cube'
+import ThreeDBackgrounds from './components/3dBackgrounds'
 import Support from './components/support'
 import Login from './components/login'
 import { makeCubes } from './components/cube'
@@ -22,7 +22,7 @@ import Resume from './assets/Scott_Hurd_Resume.pdf'
 import imgs from './components/backgrounds'
 
 import Icon from './assets/ezstack.png'
- 
+
 import { useState } from 'react'
 
 import './App.css'
@@ -78,10 +78,10 @@ function App() {
             })
 
           if (entry.intersectionRatio > .90) {
-              let x = Math.random() * 2 - 1
-              let y = Math.random() * 2 - 1
-              $(ele).attr("data-x", x)
-              $(ele).attr("data-y", y)
+            let x = Math.random() * 2 - 1
+            let y = Math.random() * 2 - 1
+            $(ele).attr("data-x", x)
+            $(ele).attr("data-y", y)
           }
 
         }
@@ -96,6 +96,7 @@ function App() {
     target = document.querySelector("#contactContainer")
     observeShowMain.observe(target)
 
+    //observe various words
     setTimeout(function () {
 
       let target = '.serviceCategory';
@@ -106,6 +107,13 @@ function App() {
       });
 
       target = '.serviceItemIcon';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
+
+      target = '.servicesBlurb';
       document.querySelectorAll(target).forEach((i) => {
         if (i) {
           observeShowMain.observe(i);
@@ -136,11 +144,15 @@ function App() {
     //Run background drop 
     function grav() {
 
-      $("#background").clone().insertAfter('#background').prop('id', 'backgroundGrav')
-      // $("#root").clone().appendTo("#backgroundGrav").prop('id', 'rootGrav')
-      $("#rootGrav #main").prop('id', 'rootMain')
-
-      $("#main").css({ color: "black" })
+      $("#background").clone().insertBefore('#background').prop('id', 'backgroundGrav')
+        $("#background").css({
+          "transition": "opacity 2000s",
+          "opacity": "0"
+        });
+        $("#backgroundGrav").css({
+          "transition": "opacity 2000s",
+          "opacity": ".7"
+        });
 
       var r1 = (Math.random())
       var r2 = (Math.random())
@@ -150,20 +162,18 @@ function App() {
       const eWidth = $(window).width();
       const eHeight = $(window).height();
 
-      $("#background").css({
-        "transition": "opacity 0s",
-        "opacity": "0"
-      });
+      setTimeout(function () {
 
-      $("#background>img").removeClass("zoomed")
+        $("#background>img").removeClass("zoomed")
 
-      $("#backgroundGrav").css({
-        "transition": "transform 10s ease-in-out, opacity 9.5s ease-in",
-        "opacity": "0",
-        "transform":
-          "translate(" + ((r1 - 0.5) * eWidth).toString() + "px, " + ((r2 - 0.5) * eHeight).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
-        // "transform-origin": "center"
-      });
+        $("#backgroundGrav").css({
+          "transition": "transform 10s ease-in-out, opacity 9.5s ease-in",
+          "opacity": "0",
+          "transform":
+            "translate(" + ((r1 - 0.5) * eWidth).toString() + "px, " + ((r2 - 0.5) * eHeight).toString() + "px) scale(" + (0).toString() + ") rotate3d(" + (r1 * 2 - 1).toString() + ", " + (r2 * 2 - 1).toString() + ", " + (r3 * 2 - 1).toString() + ", " + (rotations).toString() + "deg) "
+          // "transform-origin": "center"
+        });
+      }, 3000)
 
       setTimeout(function () {
         $('#backgroundGrav').remove()
@@ -228,28 +238,28 @@ function App() {
         makeCubesId = 0
       }, 2000)
 
-      fadeBackId = setTimeout(function () {
-        fadeBack()
-        fadeBackId = 0
-      }, 25000)
+      // fadeBackId = setTimeout(function () {
+      //   fadeBack()
+      //   fadeBackId = 0
+      // }, 25000)
 
-      sepChangeId = setTimeout(function () {
-        sepChange()
-        sepChangeId = 0
-      }, 50000)
+      // sepChangeId = setTimeout(function () {
+      //   sepChange()
+      //   sepChangeId = 0
+      // }, 50000)
 
-      gravId = setTimeout(function () {
-        grav()
-        gravId = 0
-      }, 70000)
+      // gravId = setTimeout(function () {
+      //   grav()
+      //   gravId = 0
+      // }, 70000)
 
-      vidDropId = setTimeout(function () {
-        vidDrop()
-        vidDropId = 0
-      }, 80000)
+      // vidDropId = setTimeout(function () {
+      //   vidDrop()
+      //   vidDropId = 0
+      // }, 30000)
 
-      loopId = setTimeout(loop, 90000)
-      console.log("bg effects looped")
+      loopId = setTimeout(loop, 35000)
+      // console.log("bg effects looped")
 
     }
 
@@ -262,16 +272,16 @@ function App() {
       if (vidDropId !== 0) { clearTimeout(vidDropId) }
 
       if (loopId !== 0) { clearTimeout(loopId) }
-      console.log("bg effects stopped")
+      // console.log("bg effects stopped")
     }
 
     //call main effects loop on startup
-    loop()
+    // loop()
 
     //abort loop effects if window loses focus. 
-    window.addEventListener("blur", stopEffects)
+    // window.addEventListener("blur", stopEffects)
     //start loop if window back in focus
-    window.addEventListener("focus", loop)
+    // window.addEventListener("focus", loop)
 
   }, [])
 
@@ -285,32 +295,35 @@ function App() {
 
   return (
     <>
+      <div id="techBack" ></div>
       <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
 
       <div id="mainContent" className="scroller">
-        <div id="mainTitle">
+        <div className="fullHeight">
+    
+<ThreeDBackgrounds />
+          <div id="mainTitle">
+            <Cube />
+            <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
+          </div>
 
-          <Cube />
+          <div id="services" className="row services">
+            <Services />
+          </div>
 
-          <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
-        </div>
+          <div id="tech" className="row tech">
+            <Tech />
+          </div>
 
-        <div id="services" className="row services">
-          <Services />
-        </div>
+          <div id="about" className="row about">
 
-        <div id="tech" className="row tech">
-          <Tech /> 
-        </div>
+            <div id="mainInfo" className="col main mainInfo">
+              <Info />
+            </div>
 
-        <div id="about" className="row about">
-
-          <div id="mainInfo" className="col main mainInfo">
-
-            <Info />
+            <ContactForm />
 
           </div>
-          <ContactForm />
         </div>
       </div>
       <Footer />

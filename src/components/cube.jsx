@@ -24,6 +24,7 @@ function getRandomInt(min, max) {
 
 const makeCubes = async () => {
     var cubes = []
+    $("#cubeStore").html('')
 
     function setupSwarmElements(elementId, n) {
 
@@ -63,16 +64,10 @@ const makeCubes = async () => {
 
     function moveElements(timeStamp) {
         frame++;
-        var thisFrameLag = frameLag - 16;
-        if (thisFrameLag < 0) {
-            thisFrameLag = 0
+        if (frame > 1000) {
+            frame -= 1000
         }
-        if (thisFrameLag > 100) {
-            thisFrameLag = 100
-        }
-        if (frame > 3 + (thisFrameLag)) {
-            //console.log(frame, thisFrameLag);
-            frame = 0;
+        if (frame % 3 == 0) {
 
             for (let i in cubes) {
                 var cube = cubes[i]
@@ -108,10 +103,8 @@ const makeCubes = async () => {
                     }
                 );
             }
-
-            frameLag = timeStamp - lastTimeStamp;
-            lastTimeStamp = timeStamp;
-            if ((new Date().getTime() - new Date(cube.startTime).getTime()) < cube.duration && ! document.hidden) {
+            
+            if ((new Date().getTime() - new Date(cube.startTime).getTime()) < cube.duration && !document.hidden) {
                 window.requestAnimationFrame(moveElements);
             } else {
                 for (let i in cubes) {
@@ -122,16 +115,12 @@ const makeCubes = async () => {
                 cubes = [];
             }
         } else {
-            frameLag = timeStamp - lastTimeStamp;
-            lastTimeStamp = timeStamp;
             window.requestAnimationFrame(moveElements)
-           
-            
         }
     }
 
     var frame = 0;
-    var lastTimeStamp = new Date().getTime();
+    // var lastTimeStamp = new Date().getTime();
     var frameLag = 16;
 
     setupSwarmElements("cube", 20);

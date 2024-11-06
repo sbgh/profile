@@ -36,7 +36,7 @@ const AppNav = ({ supportButtonClicked, loginButtonClicked }) => {
                     <Nav className="">
                         <Nav.Link href="#" onClick={() => handleSupportShow()}>Support</Nav.Link>
                         <Nav.Link href="#" onClick={() => handleLoginShow()}>Login</Nav.Link>
-                        <Nav.Link href="#" onClick={() => handledsStackShow()}>dsStack</Nav.Link>
+                        {/* <Nav.Link href="#" onClick={() => handledsStackShow()}>dsStack</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

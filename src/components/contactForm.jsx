@@ -6,7 +6,6 @@ import { useEffect } from "react"
 
 const ContactForm = () => {
 
-
   useEffect(() => {
 
     $("#contact-btn").on("click", function () {
@@ -25,12 +24,12 @@ const ContactForm = () => {
         dataType: 'json',
         data: data,
         success: function(request) {
-          console.log(request.message);
+          console.log(request.message)
           $("#contactSendStatus").text(request.message)
         },
         error: function(request, status, error) {
           console.log(error)
-          $("#contactSendStatus").text("error sending message")
+          $("#contactSendStatus").text("Error sending message")
         }
       });
 
