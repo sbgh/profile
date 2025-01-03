@@ -5,8 +5,11 @@ import $ from 'jquery';
 import { useEffect, useRef } from "react";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+// import { Fn, texture, vec3, pass, color, uint, screenUV, instancedArray, positionWorld, positionLocal, time, vec2, hash, instanceIndex, If } from 'three/tsl';
+
 import glbFile1 from '../assets/models/low_poly_moon.glb'
 import glbFile2 from '../assets/models/low_poly_planet_earth.glb'
+import spark from '../assets/spark1.png'
 import { render } from 'react-dom';
 
 function ThreeDBackgrounds() {
@@ -29,15 +32,59 @@ function ThreeDBackgrounds() {
         // const colors = [blue]
 
         var scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0xdddddd, .1, 300)
+        
+        let uniforms = {
+            pointTexture: { value: new THREE.TextureLoader().load( spark ) }
+        };
+
+        const pMaterial = new THREE.ShaderMaterial( {
+
+            uniforms: uniforms,
+            vertexShader: document.getElementById( 'vertexshader' ).textContent,
+            fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+
+            blending: THREE.AdditiveBlending,
+            depthTest: true,
+            transparent: true,
+            vertexColors: true
+
+        } );
+        
+        let pGeometry = new THREE.BufferGeometry();
+
+        const positions = [];
+        const pColors = [];
+        const sizes = [];
+
+        const color = new THREE.Color();
+
+        for ( let i = 0; i < 5000; i ++ ) {
+
+            const x = THREE.MathUtils.randFloatSpread(5);
+            const y = THREE.MathUtils.randFloatSpread(30);
+            const z = THREE.MathUtils.randFloatSpread(300)+180;
+            positions.push(x); positions.push(y); positions.push(z)
+
+            let colorPick = getRandomInt(0, 3)
+            color.setRGB(colors[colorPick].r, colors[colorPick].g, colors[colorPick].b) 
+            pColors.push( color.r, color.g, color.b );
+
+            sizes.push( .5 );
+        }
+
+        pGeometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+        pGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( pColors, 3 ) );
+        pGeometry.setAttribute( 'size', new THREE.Float32BufferAttribute( sizes, 1 ).setUsage( THREE.DynamicDrawUsage ) );
+        
+        const points = new THREE.Points(pGeometry, pMaterial);
+        scene.add(points);
+
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true
         });
-
-        // const gridHelper = new THREE.GridHelper(10, 10);
-        // scene.add(gridHelper);
-
-
+        
         function setRenderSize() {
 
             var sceneWidth = document.getElementById('fullHeight').offsetWidth
@@ -182,14 +229,14 @@ function ThreeDBackgrounds() {
                     obj.rotateOnAxis(obj.myAxis, obj.mySpeed);
                 }
 
-                var distance = camera.position.distanceTo(obj.position);
-                obj.traverse((object) => {
-                    if (object.material) {
-                        object.material.transparent = true
-                        object.material.depthWrite = false
-                        object.material.opacity = 1 - Math.min(distance / startZ, 1)
-                    }
-                });
+                // var distance = camera.position.distanceTo(obj.position);
+                // obj.traverse((object) => {
+                //     if (object.material) {
+                //         object.material.transparent = true
+                //         object.material.depthWrite = false
+                //         object.material.opacity = 1 - Math.min(distance / startZ, 1)
+                //     }
+                // });
             }
 
             renderer.render(scene, camera);
