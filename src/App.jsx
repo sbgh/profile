@@ -15,7 +15,7 @@ import { mainTitle } from './components/mainTitle'
 import 'bootstrap/dist/css/bootstrap.css'
 import $ from 'jquery'
 
-import Cloud from './assets/Pines_Valley_1280x720.mp4'
+// import Cloud from './assets/Pines_Valley_1280x720.mp4'
 
 import Resume from './assets/Scott_Hurd_Resume.pdf'
 
@@ -40,8 +40,9 @@ function App() {
 
   useEffect(() => {
 
-    const vidEle = $($.parseHTML('<div id="vidContainer"><video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video></div>'))
-    $("#mainTitle").prepend(vidEle)
+    // const vidEle = $($.parseHTML('<div id="vidContainer"><video autoplay muted id="dropVid"><source src="' + Cloud + '" type="video/mp4"></video></div>'))
+    // $("#mainTitle").prepend(vidEle)
+
     $("#mainTitle").prepend('<div id="cubeStore"></div><div id="background" className="background"> <img src="' + imgs[0] + '" className="mont" /></div>')
 
     setTimeout(function () {
@@ -145,14 +146,14 @@ function App() {
     function grav() {
 
       $("#background").clone().insertBefore('#background').prop('id', 'backgroundGrav')
-        $("#background").css({
-          "transition": "opacity 2000s",
-          "opacity": "0"
-        });
-        $("#backgroundGrav").css({
-          "transition": "opacity 2000s",
-          "opacity": ".7"
-        });
+      $("#background").css({
+        "transition": "opacity 2000s",
+        "opacity": "0"
+      });
+      $("#backgroundGrav").css({
+        "transition": "opacity 2000s",
+        "opacity": ".7"
+      });
 
       var r1 = (Math.random())
       var r2 = (Math.random())
@@ -295,16 +296,16 @@ function App() {
 
   return (
     <>
-      <div id="techBack" ></div>
-      <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
+      <div id="techBack" className="hidden" ></div>
+      <ThreeDBackgrounds />
+          <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
 
       <div id="mainContent" className="scroller">
-        <div className="fullHeight">
-    
-<ThreeDBackgrounds />
+        <div id='fullHeight' className="fullHeight">
+
           <div id="mainTitle">
-            <Cube />
-            <div id='mainTitleContain'><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div>
+            {/* <Cube /> */}
+            <div id='mainTitleContain'><div id='mainTitleContainBorder' className="hidden"><div id='topTitle'></div><div id='subTitle'></div><div id='btnRow'></div></div></div>
           </div>
 
           <div id="services" className="row services">
@@ -321,9 +322,9 @@ function App() {
               <Info />
             </div>
 
-            <ContactForm />
-
           </div>
+
+          <ContactForm />
         </div>
       </div>
       <Footer />

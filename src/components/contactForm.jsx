@@ -12,7 +12,7 @@ const ContactForm = () => {
 
       console.log("sending")
 
-      let data={}
+      let data = {}
       data.name = $("#contactName").val().substring(0, 100)
       data.email = $("#contactEmail").val().substring(0, 100)
       data.subject = $("#contactSubject").val().substring(0, 500)
@@ -23,11 +23,11 @@ const ContactForm = () => {
         url: "/contact",
         dataType: 'json',
         data: data,
-        success: function(request) {
+        success: function (request) {
           console.log(request.message)
           $("#contactSendStatus").text(request.message)
         },
-        error: function(request, status, error) {
+        error: function (request, status, error) {
           console.log(error)
           $("#contactSendStatus").text("Error sending message")
         }
@@ -44,7 +44,7 @@ const ContactForm = () => {
         <div className='row'>
           <div className='col-12 text-center'>
             <div className='contactForm'>
-    <p>Please feel free to contact us through <a href="email:ezstack.systems@gmail.com">email</a> or the form below. We are available for quotes and we love to talk about technology.</p>
+              <p>Please feel free to contact us through <a href="email:ezstack.systems@gmail.com">email</a> or the form below. We are available for quotes and we love to talk about technology.</p>
               <form
                 id='contact-form'
               >
@@ -52,7 +52,7 @@ const ContactForm = () => {
                 <div className='row formRow'>
                   <div className='col-6'>
                     <input
-                    id='contactName'
+                      id='contactName'
                       type='text'
                       name='name'
                       className='form-control formInput'
@@ -62,7 +62,7 @@ const ContactForm = () => {
                   </div>
                   <div className='col-6'>
                     <input
-                    id='contactEmail'
+                      id='contactEmail'
                       type='email'
                       name='email'
                       className='form-control formInput'
@@ -75,7 +75,7 @@ const ContactForm = () => {
                 <div className='row formRow'>
                   <div className='col'>
                     <input
-                    id='contactSubject'
+                      id='contactSubject'
                       type='text'
                       name='subject'
                       className='form-control formInput'
@@ -88,7 +88,7 @@ const ContactForm = () => {
                 <div className='row formRow'>
                   <div className='col'>
                     <textarea
-                    id='contactMessage'
+                      id='contactMessage'
                       rows={3}
                       name='message'
                       className='form-control formInput'

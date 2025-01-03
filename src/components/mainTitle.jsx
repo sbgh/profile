@@ -123,6 +123,7 @@ const mainTitle = async () => {
 
     }
     setupSpinTitle()
+    $("#mainTitleContainBorder").removeClass("hidden")
 }
 
 export { mainTitle }

@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
+  background-color: #ffffffdb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,8 +22,9 @@
   z-index: 10;
 }
 
-body{
+html body{
   overscroll-behavior-x: none;
+  background-color: #ffffff00;
 }
 
 #mainContent {
@@ -32,7 +33,6 @@ body{
   height: calc(100vh - 100px);
   scrollbar-color: white #919191;
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
 }
 
 .fullHeight{
@@ -42,6 +42,21 @@ body{
 div#mainTitle {
   height: calc(100vh - 100px);
   position: relative;
+}
+
+div#mainTitleContainBorder {
+  border: solid black 1px;
+  border-radius: 30px;
+  margin: auto;
+  backdrop-filter: blur(3px);
+  padding: 5px 10px;
+  background-color: #ffffffb3;
+  opacity: 1;
+  transition: opacity 1s 2s ease-in-out;
+}
+
+div#mainTitleContainBorder.hidden {
+  opacity: 0
 }
 
 div#subTitle {
@@ -66,14 +81,14 @@ div#subTitle {
   /* border: #d5d5d51f solid 10px; */
   /* border-radius: 66px; */
   overflow: hidden;
-  background-color: rgb(255 255 255);
+  /* background-color: rgb(255 255 255); */
   margin: 15px;
   padding: 0;
   text-align: center;
 }
 
 #mainInfo {
-  background-color: #ffffffae;
+  /* background-color: #ffffffae; */
 }
 
 #rootMain {
@@ -656,12 +671,22 @@ div#techBack {
   top: 0;
 }
 
+
+div#techBack{
+  transition: opacity 0.3s;
+  opacity:1;
+}
+
+div#techBack.hidden{
+  opacity:0;
+}
+
 .techBack {
   width: 100%;
   position: absolute;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity .5s;
   background-position: center;
   background-size: 200%;
   filter: blur(5px);
@@ -687,15 +712,21 @@ div#techsTitle {
 
 .techsList {
   display: flex;
-    flex-direction: column;
+    flex-direction: row;
   /* padding: 60px 0;
   overflow-x: scroll;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   white-space: nowrap;
   width: 80vw;*/
-  margin: 5vh 0; 
+  margin: 5vh 5vw;
+  padding: 0 5vw;
   position: relative;
+  overflow-x: auto;
+  /* overscroll-behavior-x: contain; */
+  /* scroll-snap-type: x proximity; */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
 }
 
 /* .techItemHolder {
@@ -708,8 +739,9 @@ div#techsTitle {
 } */
 
 .techItemHolder {
-  margin: 4vh 4vw;
+  margin: 4vh 2vw;
   padding: 0 1vw;
+  min-width: 70vw;
 }
 
 .techItemSnap {
@@ -717,9 +749,9 @@ div#techsTitle {
 }
 
 .techItemHolder.techChanging {
-  border: 1px solid black;
+  /* border: 1px solid black;
   border-width:0px 1px;
-  border-radius: 20px;
+  border-radius: 20px; */
 }
 
 .techItemHolder.techChange {
@@ -731,8 +763,10 @@ div#techsTitle {
 .techItem {
   /* transform: perspective(50px) translate3d(0px, 0px, 0px);
   transition: transform 1s ease-out */
-  max-width: 80em;
-  margin: 0 auto;
+  /* max-width: 80em;
+  margin: 0 auto; */
+  display: flex;
+    flex-wrap: wrap;
 }
 
 .techItemName {
@@ -741,8 +775,11 @@ div#techsTitle {
   padding: 1vw 2vw;
   font-size: 1.4em;
 }
+
 .techItemText {
-  /* min-width: 55%; */
+  min-width: 19em;
+  max-width: 45%;
+  min-height: 20em;
 }
 
 .techItemDesc {
@@ -750,6 +787,7 @@ div#techsTitle {
   text-align: left;
   padding: 1vw 2vw;
 }
+
 
 .techItemImg {
   /* height: 100%; */
@@ -765,6 +803,7 @@ div#techsTitle {
   width: 100%;
   grid-row-start: 1;
   grid-column-start: 1;
+  /* max-width: 45%; */
 }
 
 .techItemLinks {
@@ -797,7 +836,13 @@ div#techsTitle {
 
 div#threeBack {
   position: absolute;
-  
+  z-index: -1;
+  opacity:1;
+  transition: 1s;
+}
+
+div#threeBack.hidden{
+  opacity:0;
 }
 
 
@@ -814,7 +859,7 @@ div#threeBack {
 @media (max-width: 501px) {
 
   #root {
-    padding: 1rem;
+    /* padding: 1rem; */
   }
 
   h1 {

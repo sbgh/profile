@@ -46,7 +46,7 @@ setTimeout(function () {
             let sImg = snaps[0][x]
             // let sVid = snaps[1][x] ? snaps[1][x] : ''
 
-            const itemHTML = "<div idx='" + x + "' class='techItemHolder techItemSnap'><div class='row techItem'><div class='col-sm-12 col-md-6 techItemText'></div></div></div>"
+            const itemHTML = "<div idx='" + x + "' class='techItemHolder techItemSnap'><div class='col-md-12 techItem'><div class='col techItemText'></div></div></div>"
 
             const itemEle = $($.parseHTML(itemHTML))
 
@@ -58,13 +58,13 @@ setTimeout(function () {
             itemEle.find(".techItemDesc").text(sDesc)
             itemEle.find(".techItemLinks").html("<a href='" + slink + "' target='_new' >" + slink + "</a>")
 
-            const itemImgHTML = "<div class='col-sm-12 col-md-6 techItemImg'></div>"
+            const itemImgHTML = "<div class='col techItemImg'></div>"
 
-            if (x % 2 === 0) {
+            // if (x % 2 === 0) {
                 itemEle.find(".techItem").append(itemImgHTML)
-            } else {
-                itemEle.find(".techItem").prepend(itemImgHTML)
-            }
+            // } else {
+                // itemEle.find(".techItem").prepend(itemImgHTML)
+            // }
 
 
             const imgOb = $($.parseHTML("<img idx='" + x + "' src='" + sImg + "' alt='Screen shot:" + sName + "' />"))
@@ -72,16 +72,19 @@ setTimeout(function () {
             itemEle.find(".techItemImg").append(imgOb).append(vidOb)
 
             $("#techsList").append(itemEle)
+
             $("#techBack").append("<div class='techBack' style='background-image:url(" + sImg + ")'></div>")
         }
 
         $("#techBack").append("<div class='techBackGlass'></div>")
 
-        var scroller = document.querySelector(".scroller")
+        var scroller = document.querySelector(".techsList")
         scroller.addEventListener('scrollsnapchange', event => {
-            if (event.snapTargetBlock) {
-                let thisIdx = event.snapTargetBlock.attributes["idx"].value
-                let thisTarget = event.snapTargetBlock
+            
+            console.log("change");
+            if (event.snapTargetInline) {
+                let thisIdx = event.snapTargetInline.attributes["idx"].value
+                let thisTarget = event.snapTargetInline
                 console.log(thisIdx);
 
                 $(".techItemHolder ").each(function (index) {
@@ -96,7 +99,7 @@ setTimeout(function () {
                     }
 
                 })
-                $(thisTarget).addClass("techChange").removeClass("techItemSnap")
+                // $(thisTarget).addClass("techChange").removeClass("techItemSnap")
 
 
                 $(".techBack").each(function (index) {
@@ -105,17 +108,18 @@ setTimeout(function () {
 
                 $(".techBack").eq(thisIdx).addClass("techChange")
 
-                $(".techBackGlass").css({ "backdrop-filter": "grayscale(.6" })
+                // $(".techBackGlass").css({ "backdrop-filter": "grayscale(.6" })
 
                 
             }
         });
 
         scroller.addEventListener('scrollsnapchanging', event => {
-            if (event.snapTargetBlock) {
-                let thisIdx = event.snapTargetBlock.attributes["idx"].value
-                let thisTarget = event.snapTargetBlock
-                // console.log(thisIdx);
+            console.log("changeing");
+            if (event.snapTargetInline) {
+                let thisIdx = event.snapTargetInline.attributes["idx"].value
+                let thisTarget = event.snapTargetInline
+                console.log(thisIdx);
 
                 $(".techItemHolder ").each(function (index) {
                     $(".techItemHolder ").eq(index).removeClass("techChanging")
@@ -132,23 +136,35 @@ setTimeout(function () {
         //setup observe on #techs to turn off effects if scrolled out
         let options = {
             root: null,
-            threshold: [0, 0.1, 0.2],
+            threshold: [0, 0.1, 0.2, 1],
             rootMargin: '-10% 0% -10% 0%',
         };
 
         let showTechs = function (entries, observer) {
+            console.log("ob #techs")
             entries.forEach(entry => {
                 const ratio = entry.intersectionRatio //entry.isIntersecting
+                console.log("ratio",ratio)
                 //   entry.target.style.opacity = ratio
 
-                //   let ele = entry.target
-                if (ratio < .2) {
-                    $("#techs").removeClass("scrollsnapSelected")
+                  let ele = entry.target
+                if (ratio > .8) {
+                    // $("#techsList").removeClass("scrollsnapSelected")
                     // $(".techBackGlass").css({"backdrop-filter": "blur(0px)"})
                     $(".techBack").each(function (index) {
-                        $(".techBack").eq(index).removeClass("techChange").removeClass("techChanging")
-                        $(".techItemHolder ").eq(index).removeClass("techChange").removeClass("techChanging").addClass("techItemSnap")
+                        // $(".techBack").eq(index).addClass("techChange").addClass("techChanging")
                     })
+                    $("#techBack").removeClass("hidden")
+                    $("#threeBack").addClass("hidden")
+                    
+
+                }else{
+                    // $(".techItemHolder ").eq(0).addClass("techChanging")
+                    $(".techBack").each(function (index) {
+                        // $(".techBack").eq(index).removeClass("techChange").removeClass("techChanging")
+                    })
+                    $("#techBack").addClass("hidden")
+                    $("#threeBack").removeClass("hidden")
                 }
 
             });
@@ -156,7 +172,7 @@ setTimeout(function () {
 
         let observeShowTechs = new IntersectionObserver(showTechs, options)
 
-        let target = document.querySelector("#techs")
+        let target = document.querySelector("#techsList")
         observeShowTechs.observe(target)
 
     }
