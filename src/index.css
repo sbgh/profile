@@ -22,7 +22,7 @@
   z-index: 10;
 }
 
-html body{
+html body {
   overscroll-behavior-x: none;
   background-color: #ffffff00;
 }
@@ -35,8 +35,9 @@ html body{
   scroll-behavior: smooth;
 }
 
-.fullHeight{
+.fullHeight {
   position: relative;
+  /* background-image: url(assets/backgrounds/hubble_deep.jpg); */
 }
 
 div#mainTitle {
@@ -63,7 +64,7 @@ div#subTitle {
   font-size: 35px;
 }
 
-.word{
+.word {
   white-space: nowrap;
   display: inline-block;
 }
@@ -88,7 +89,12 @@ div#subTitle {
 }
 
 #mainInfo {
-  /* background-color: #ffffffae; */
+  border-radius: 30px;
+  backdrop-filter: blur(3px);
+  padding: 2em 1em;
+  background-color: #ffffffb3;
+  opacity: 1;
+  border: solid black 1px;
 }
 
 #rootMain {
@@ -96,7 +102,7 @@ div#subTitle {
   max-width: 400px;
 }
 
-.mainInfo{
+.mainInfo {
   transition: opacity 0.5s ease-in, transform 1s ease-out;
   opacity: 0;
   padding: 10px;
@@ -104,7 +110,7 @@ div#subTitle {
   min-width: 600px;
 }
 
-#contactContainer{
+#contactContainer {
   transition: opacity 0.5s ease-in, transform 1s ease-out;
   opacity: 0;
 }
@@ -305,7 +311,7 @@ h2 {
   padding: 10px 20px;
 }
 
-.footerItemRight{
+.footerItemRight {
   margin-left: auto;
 }
 
@@ -421,10 +427,11 @@ div#vidContainer {
 
 .navbar,
 .navbar-default {
-    /* background:rgb(255, 255, 255)!important; */
-    background: transparent !important;
+  /* background:rgb(255, 255, 255)!important; */
+  background: transparent !important;
 }
-.nav-link{
+
+.nav-link {
   color: black !important;
 }
 
@@ -524,6 +531,7 @@ div#mainTitleContain {
   display: inline-block;
   text-shadow: #33333300 -1px -1px 14px;
 }
+
 .raiseChr {
   font-size: 35px;
   color: transparent;
@@ -553,13 +561,15 @@ div#btnRow {
   transform: translate(200vh, 0px);
 }
 
-#mainBtn0{
+#mainBtn0 {
   background: var(--Blue);
 }
-#mainBtn1{
+
+#mainBtn1 {
   background: var(--Red);
 }
-#mainBtn2{
+
+#mainBtn2 {
   background: var(--Yellow);
 }
 
@@ -575,7 +585,11 @@ div#services {
 
 }
 
-.serviceCategory  span {
+div#serviceCategory {
+  display: inline-block;
+}
+
+.serviceCategory span {
   font-size: 35px;
   color: black !important;
 }
@@ -587,21 +601,32 @@ div#servicesBlurb {
   padding: 0 15px;
 }
 
+div#serviceCategoryHolder {
+  display: inline-block;
+  border: solid black 1px;
+  border-radius: 30px;
+  margin: auto;
+  backdrop-filter: blur(3px);
+  padding: 2em 5px 10px;
+  background-color: #ffffffb3;
+  opacity: 1;
+}
+
 .serviceList.row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   max-width: 75em;
   margin-left: auto;
-    margin-right: auto;
-    margin-top: 5vh;
-    /* display: grid;
+  margin-right: auto;
+  margin-top: 5vh;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px; */
 }
 
-.serviceList > div {
+.serviceList>div {
   max-width: 26em;
   min-width: 20em;
   text-align: left;
@@ -616,10 +641,14 @@ div#servicesBlurb {
   font-weight: 700;
   font-size: larger;
   margin: 2vw 0 0 0;
-  
+
 }
 
-.serviceCategory, .serviceItemName, .serviceItemDescription, .serviceItemIcon, .servicesBlurb{
+.serviceCategory,
+.serviceItemName,
+.serviceItemDescription,
+.serviceItemIcon,
+.servicesBlurb {
   transition: opacity 0.5s ease-in, transform 1s ease-out;
   opacity: 0;
   display: inline-block;
@@ -628,10 +657,16 @@ div#servicesBlurb {
 }
 
 .serviceItem {
-  padding: 1vw;
+  border: solid black 1px;
+  border-radius: 30px;
+  backdrop-filter: blur(3px);
+  padding: 2em 1em;
+  background-color: #ffffffb3;
+  opacity: 1;
 }
 
-.serviceCategory.flutter, .servicesBlurb.flutter {
+.serviceCategory.flutter,
+.servicesBlurb.flutter {
   display: inline-block;
 }
 
@@ -643,6 +678,7 @@ div#servicesBlurb {
 .serviceItemName {
   font-size: 20px;
 }
+
 .serviceItemDescription {
   font-size: 16px;
 }
@@ -656,10 +692,11 @@ div#techs {
   flex-direction: column;
   position: relative; */
   padding: 13vh 0;
-  box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
   transition: background-color 1s, color 1s, box-shadow 1s;
   position: relative;
-  a{
+
+  a {
     font-size: 20px;
   }
 }
@@ -672,13 +709,13 @@ div#techBack {
 }
 
 
-div#techBack{
+div#techBack {
   transition: opacity 0.3s;
-  opacity:1;
+  opacity: 1;
 }
 
-div#techBack.hidden{
-  opacity:0;
+div#techBack.hidden {
+  opacity: 0;
 }
 
 .techBack {
@@ -692,11 +729,11 @@ div#techBack.hidden{
   filter: blur(5px);
 }
 
-.techBack.techChange{
+.techBack.techChange {
   opacity: 0.2;
 }
 
-.techBackGlass{
+.techBackGlass {
   width: 100%;
   position: absolute;
   height: 100%;
@@ -712,7 +749,7 @@ div#techsTitle {
 
 .techsList {
   display: flex;
-    flex-direction: row;
+  flex-direction: row;
   /* padding: 60px 0;
   overflow-x: scroll;
   overscroll-behavior-x: contain;
@@ -754,9 +791,7 @@ div#techsTitle {
   border-radius: 20px; */
 }
 
-.techItemHolder.techChange {
-
-}
+.techItemHolder.techChange {}
 
 
 
@@ -766,7 +801,7 @@ div#techsTitle {
   /* max-width: 80em;
   margin: 0 auto; */
   display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .techItemName {
@@ -799,7 +834,8 @@ div#techsTitle {
   grid-template-columns: 1fr;
 }
 
-.techItemImg img, .techItemImg video {
+.techItemImg img,
+.techItemImg video {
   width: 100%;
   grid-row-start: 1;
   grid-column-start: 1;
@@ -828,7 +864,7 @@ div#techsTitle {
   margin: 1vw;
 }
 
-.flutter span{
+.flutter span {
   transition: opacity 1s ease-in, transform 1s ease-out;
   display: inline-block;
   margin: 0;
@@ -837,12 +873,13 @@ div#techsTitle {
 div#threeBack {
   position: absolute;
   z-index: -1;
-  opacity:1;
-  transition: 1s;
+  opacity: 1;
+  /* transition: 1s; */
+  /* background-image: url(/src/assets/backgrounds/hubble_deep.jpg); */
 }
 
-div#threeBack.hidden{
-  opacity:0;
+div#threeBack.hidden {
+  opacity: 0;
 }
 
 
@@ -909,6 +946,22 @@ div#threeBack.hidden{
 
   .serviceList.row {
     width: 100%;
+  }
+
+  div#techs a {
+    font-size: 17px;
+  }
+
+  .techsList {
+    margin: 0;
+  }
+
+  .techItemName {
+    font-size: 1.2em;
+  }
+
+  .techItemText {
+    min-width: 17em;
   }
 
 }

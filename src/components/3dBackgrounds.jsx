@@ -1,16 +1,15 @@
 
-import * as THREE from 'three';
-import $ from 'jquery';
+import * as THREE from 'three'
+import $ from 'jquery'
 
-import { useEffect, useRef } from "react";
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-// import { Fn, texture, vec3, pass, color, uint, screenUV, instancedArray, positionWorld, positionLocal, time, vec2, hash, instanceIndex, If } from 'three/tsl';
+import { useEffect, useRef } from "react"
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 import glbFile1 from '../assets/models/low_poly_moon.glb'
 import glbFile2 from '../assets/models/low_poly_planet_earth.glb'
 import spark from '../assets/spark1.png'
-import { render } from 'react-dom';
+// import background from '../assets/backgrounds/hubble_deep.jpg'
+// import { render } from 'react-dom'
 
 function ThreeDBackgrounds() {
     const refContainer = useRef(null);
@@ -20,99 +19,127 @@ function ThreeDBackgrounds() {
         function getRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+            return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const red = new THREE.Color("rgb(224, 54, 122)");
-        const green = new THREE.Color("rgb(122, 224, 54)");
-        const blue = new THREE.Color("rgb(54, 122, 224)");
-        const yellow = new THREE.Color("rgb(224, 156, 54)");
-        const white = new THREE.Color("rgb(255, 255, 255)");
+        const red = new THREE.Color("rgb(224, 54, 122)")
+        const green = new THREE.Color("rgb(122, 224, 54)")
+        const blue = new THREE.Color("rgb(54, 122, 224)")
+        const yellow = new THREE.Color("rgb(224, 156, 54)")
+        const white = new THREE.Color("rgb(255, 255, 255)")
         const colors = [red, green, blue, yellow]
-        // const colors = [blue]
 
         var scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0xdddddd, .1, 300)
-        
+
         let uniforms = {
-            pointTexture: { value: new THREE.TextureLoader().load( spark ) }
+            pointTexture: { value: new THREE.TextureLoader().load(spark) }
         };
 
-        const pMaterial = new THREE.ShaderMaterial( {
+        const pMaterial = new THREE.ShaderMaterial({
 
             uniforms: uniforms,
-            vertexShader: document.getElementById( 'vertexshader' ).textContent,
-            fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+            vertexShader: document.getElementById('vertexshader').textContent,
+            fragmentShader: document.getElementById('fragmentshader').textContent,
 
             blending: THREE.AdditiveBlending,
             depthTest: true,
             transparent: true,
             vertexColors: true
 
-        } );
-        
-        let pGeometry = new THREE.BufferGeometry();
+        });
 
-        const positions = [];
-        const pColors = [];
-        const sizes = [];
+        let pGeometry = new THREE.BufferGeometry()
 
-        const color = new THREE.Color();
+        const positions = []
+        const pColors = []
+        const sizes = []
 
-        for ( let i = 0; i < 5000; i ++ ) {
+        const color = new THREE.Color()
+
+        for (let i = 0; i < 5000; i++) {
 
             const x = THREE.MathUtils.randFloatSpread(5);
             const y = THREE.MathUtils.randFloatSpread(30);
-            const z = THREE.MathUtils.randFloatSpread(300)+180;
+            const z = THREE.MathUtils.randFloatSpread(300) + 180;
             positions.push(x); positions.push(y); positions.push(z)
 
             let colorPick = getRandomInt(0, 3)
-            color.setRGB(colors[colorPick].r, colors[colorPick].g, colors[colorPick].b) 
-            pColors.push( color.r, color.g, color.b );
+            color.setRGB(colors[colorPick].r, colors[colorPick].g, colors[colorPick].b)
+            pColors.push(color.r, color.g, color.b)
 
-            sizes.push( .5 );
+            sizes.push(.7);
         }
 
-        pGeometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
-        pGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( pColors, 3 ) );
-        pGeometry.setAttribute( 'size', new THREE.Float32BufferAttribute( sizes, 1 ).setUsage( THREE.DynamicDrawUsage ) );
-        
-        const points = new THREE.Points(pGeometry, pMaterial);
+        pGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
+        pGeometry.setAttribute('color', new THREE.Float32BufferAttribute(pColors, 3))
+        pGeometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1).setUsage(THREE.DynamicDrawUsage))
+
+        const points = new THREE.Points(pGeometry, pMaterial)
         scene.add(points);
+
+ 
+        //------sphere-------------
+        // var spacetex = THREE.ImageUtils.loadTexture("https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/space.jpg");
+        // var spacetex = new THREE.TextureLoader().load( "https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/space.jpg" )
+        // var spacetex = new THREE.TextureLoader().load("../assets/backgrounds/hubble_deep.jpg")
+
+        // var spacesphereGeo = new THREE.SphereGeometry(1000, 20, 20);
+        // var spacesphereMat = new THREE.MeshPhongMaterial();
+        // spacesphereMat.map = spacetex;
+
+        // var spacesphere = new THREE.Mesh(spacesphereGeo, spacesphereMat);
+
+        // //spacesphere needs to be double sided as the camera is within the spacesphere
+        // spacesphere.material.side = THREE.DoubleSide;
+        // spacesphere.material.map.wrapS = THREE.RepeatWrapping;
+        // spacesphere.material.map.wrapT = THREE.RepeatWrapping;
+        // spacesphere.material.map.repeat.set(5, 5);
+
+        //   scene.add(spacesphere);
+
+
+
+
+
 
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true
         });
-        
+
         function setRenderSize() {
 
             var sceneWidth = document.getElementById('fullHeight').offsetWidth
             var sceneHeight = document.getElementById('fullHeight').offsetHeight
 
-            renderer.setSize(sceneWidth, sceneHeight);
-            camera.aspect = sceneWidth / sceneHeight;
-            camera.updateProjectionMatrix();
+            renderer.setSize(sceneWidth, sceneHeight)
+            camera.aspect = sceneWidth / sceneHeight
+            camera.updateProjectionMatrix()
             // console.log(sceneWidth, sceneHeight)
 
         }
-        window.addEventListener('resize', setRenderSize, false);
+        window.addEventListener('resize', setRenderSize, false)
 
 
         //Lights
-        let light = new THREE.DirectionalLight(0xffffff, 2);
+        let light = new THREE.DirectionalLight(0xffffff, 2)
         light.position.set(50, 50, 10);
-        scene.add(light, new THREE.AmbientLight(0xffffff, .9));
+        scene.add(light, new THREE.AmbientLight(0xffffff, .9))
 
         //Camera
-        var camera = new THREE.PerspectiveCamera(50, 1, .1, 1000);
-        // camera.updateProjectionMatrix();
-
+        var camera = new THREE.PerspectiveCamera(50, 1, .1, 5000)
 
         // let controls = new THREE.OrbitControls(camera, renderer.domElement);
 
+        const size = 10;
+        const divisions = 10;
+
+        const gridHelper = new THREE.GridHelper(size, divisions);
+        // scene.add(gridHelper);
+
         // use ref as a mount point of the Three.js scene instead of the document.body
-        refContainer.current && refContainer.current.appendChild(renderer.domElement);
+        refContainer.current && refContainer.current.appendChild(renderer.domElement)
         var cloneModels = []
         function setCloneColor(clone, colorInc) {
             clone.traverse((object) => {
@@ -168,7 +195,7 @@ function ThreeDBackgrounds() {
                 clone.num = num
 
                 if (num == 0 && i == 0) {
-                    clone.position.x = -1.0
+                    clone.position.x = -1
                     clone.position.y = 9.7;
                     clone.position.z = 26;
                     clone.mySpeed = -.0002
@@ -199,17 +226,17 @@ function ThreeDBackgrounds() {
         var startDate = new Date()
         var skipCount = 0
         var animate = function () {
-            requestAnimationFrame(animate);
+            requestAnimationFrame(animate)
 
             skipCount++
             if (skipCount < 2) return //animate every 2nd frame to reduce load
 
             skipCount = 0
             var zDuration = 25000 //ms
-            var startZ = 300
+            var startZ = 400
             var endZ = 30
             var now = new Date();
-            var timeDiff = Math.abs(now.getTime() - startDate.getTime());
+            var timeDiff = Math.abs(now.getTime() - startDate.getTime())
             var easeToZero = 1 - Math.sin(Math.min(timeDiff / zDuration * Math.PI, Math.PI) / 2)
 
             var fHeight = document.getElementById('fullHeight').offsetHeight
@@ -217,16 +244,16 @@ function ThreeDBackgrounds() {
             camera.position.y = -position / fHeight * 40 + 10
 
             //look down a bit
-            var pi = Math.PI;
+            var pi = Math.PI
             camera.rotation.x = -24 * (pi / 180)
 
-            camera.position.z = endZ + (easeToZero * startZ);
+            camera.position.z = endZ + (easeToZero * startZ)
 
             for (let x in cloneModels) {
                 let obj = cloneModels[x]
 
                 if (obj) {
-                    obj.rotateOnAxis(obj.myAxis, obj.mySpeed);
+                    obj.rotateOnAxis(obj.myAxis, obj.mySpeed)
                 }
 
                 // var distance = camera.position.distanceTo(obj.position);
@@ -239,11 +266,11 @@ function ThreeDBackgrounds() {
                 // });
             }
 
-            renderer.render(scene, camera);
+            renderer.render(scene, camera)
 
         };
 
-        const loader = new GLTFLoader();
+        const loader = new GLTFLoader()
         var clone
         var animateStarted = false
 
@@ -251,15 +278,16 @@ function ThreeDBackgrounds() {
             setRenderSize()
 
             loader.load(glbFile1, constructModels.bind(null, 0), undefined, function (error) {
-                console.error(error);
+                console.error(error)
             });
             loader.load(glbFile2, constructModels.bind(null, 1), undefined, function (error) {
-                console.error(error);
+                console.error(error)
             });
-            camera.lookAt(scene.position);
-        }, 2000)
+            camera.lookAt(scene.position)
+        }, 500)
 
-    }, []);
+    }, [])
+
     return (
         <div id="threeBack" className='threeBack' ref={refContainer}></div>
 

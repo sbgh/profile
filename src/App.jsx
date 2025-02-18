@@ -17,7 +17,7 @@ import $ from 'jquery'
 
 // import Cloud from './assets/Pines_Valley_1280x720.mp4'
 
-import Resume from './assets/Scott_Hurd_Resume.pdf'
+// import Resume from './assets/Scott_Hurd_Resume.pdf'
 
 import imgs from './components/backgrounds'
 
@@ -100,7 +100,17 @@ function App() {
     //observe various words
     setTimeout(function () {
 
-      let target = '.serviceCategory';
+      let target = document.querySelector("#serviceCategoryHolder")
+      observeShowMain.observe(target)
+
+      target = '.serviceItem';
+      document.querySelectorAll(target).forEach((i) => {
+        if (i) {
+          observeShowMain.observe(i);
+        }
+      });
+
+      target = '.serviceCategory';
       document.querySelectorAll(target).forEach((i) => {
         if (i) {
           observeShowMain.observe(i);
@@ -298,7 +308,7 @@ function App() {
     <>
       <div id="techBack" className="hidden" ></div>
       <ThreeDBackgrounds />
-          <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
+      <AppNav supportButtonClicked={handleSupportShow} loginButtonClicked={handleLoginShow} />
 
       <div id="mainContent" className="scroller">
         <div id='fullHeight' className="fullHeight">

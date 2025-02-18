@@ -97,9 +97,11 @@ setTimeout(function (title, servicesArrays) {
     var y = Math.random() * 2 - 1
     var r = Math.random() * 2 - 1
 
-    
-    var serviceEle = $($.parseHTML('<div id="serviceCategory" class="serviceCategoryRow"></div>'))
+    var serviceEle = $('<div id="serviceCategoryHolder"></div>')
     $('#servicesCol').append(serviceEle)
+    
+    serviceEle = $('<div id="serviceCategory" class="serviceCategoryRow"></div>')
+    $('#serviceCategoryHolder').append(serviceEle)
     for (let n in title.split(" ")) {
         x = Math.random() * 2 - 1
         y = Math.random() * 2 - 1
@@ -110,8 +112,8 @@ setTimeout(function (title, servicesArrays) {
     }
 
 
-    serviceEle = $($.parseHTML('<div id="servicesBlurb" class="servicesBlurbRow"></div>'))
-    $('#servicesCol').append(serviceEle)
+    serviceEle = $('<div id="servicesBlurb" class="servicesBlurbRow"></div>')
+    $('#serviceCategoryHolder').append(serviceEle)
     for (let n in servicesBlurb.split(" ")) {
         x = Math.random() * 2 - 1
         y = Math.random() * 2 - 1
@@ -121,7 +123,7 @@ setTimeout(function (title, servicesArrays) {
         $("#servicesBlurb").append('<div class="servicesBlurb flutter" data-x=' + x + ' data-y=' + y + ' data-r=' + r + '><span>' + wrd + '</span></div>')
     }
 
-    serviceEle = $($.parseHTML('<div id="serviceList" class="serviceList row"></div>'))
+    serviceEle = $('<div id="serviceList" class="serviceList row"></div>')
     $('#servicesCol').append(serviceEle)
 
     for (let ind in servicesArrays) {

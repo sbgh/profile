@@ -81,11 +81,11 @@ setTimeout(function () {
         var scroller = document.querySelector(".techsList")
         scroller.addEventListener('scrollsnapchange', event => {
             
-            console.log("change");
+            // console.log("change");
             if (event.snapTargetInline) {
                 let thisIdx = event.snapTargetInline.attributes["idx"].value
                 let thisTarget = event.snapTargetInline
-                console.log(thisIdx);
+                // console.log(thisIdx);
 
                 $(".techItemHolder ").each(function (index) {
                     if (index.toString() !== thisIdx) {
@@ -115,11 +115,11 @@ setTimeout(function () {
         });
 
         scroller.addEventListener('scrollsnapchanging', event => {
-            console.log("changeing");
+            // console.log("changeing");
             if (event.snapTargetInline) {
                 let thisIdx = event.snapTargetInline.attributes["idx"].value
                 let thisTarget = event.snapTargetInline
-                console.log(thisIdx);
+                // console.log(thisIdx);
 
                 $(".techItemHolder ").each(function (index) {
                     $(".techItemHolder ").eq(index).removeClass("techChanging")
@@ -141,10 +141,10 @@ setTimeout(function () {
         };
 
         let showTechs = function (entries, observer) {
-            console.log("ob #techs")
+            // console.log("ob #techs")
             entries.forEach(entry => {
                 const ratio = entry.intersectionRatio //entry.isIntersecting
-                console.log("ratio",ratio)
+                // console.log("ratio",ratio)
                 //   entry.target.style.opacity = ratio
 
                   let ele = entry.target
