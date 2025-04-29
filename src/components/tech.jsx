@@ -11,6 +11,12 @@ import Col from 'react-bootstrap/Col';
 
 const title = 'Here are some of the projects that we have worked on'
 const techsList = `
+eCommerce Custom Web (Automotive Services)
+Hand coded promotional web site with Node.js backend and integrated custom store with Stripe payment system. (In Development)
+https://ChargeRide.ca/
+Android mobile application (Automotive Services)
+Custom Android WebView app for peer-2-peer service request resource tracking, Web Socket chat, Geo location and openLayer maps. (In Development)
+https://ChargeRide.ca/
 WordPress Custom Theme (Professional Services)
 Stylish WordPress theme with hand coded 3D effects and responsive design. Plugins include Advanced Custom Fields for content management and WP Mail SMTP for online messaging.
 https://kilanicorp.com/

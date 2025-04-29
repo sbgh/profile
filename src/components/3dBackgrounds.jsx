@@ -78,7 +78,6 @@ function ThreeDBackgrounds() {
         const points = new THREE.Points(pGeometry, pMaterial)
         scene.add(points);
 
- 
         //------sphere-------------
         // var spacetex = THREE.ImageUtils.loadTexture("https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/space.jpg");
         // var spacetex = new THREE.TextureLoader().load( "https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/space.jpg" )

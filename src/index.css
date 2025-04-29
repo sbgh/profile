@@ -834,12 +834,13 @@ div#techsTitle {
   grid-template-columns: 1fr;
 }
 
-.techItemImg img,
-.techItemImg video {
-  width: 100%;
+
+.techItemImg img, .techItemImg video {
+  /* width: 100%; */
   grid-row-start: 1;
   grid-column-start: 1;
-  /* max-width: 45%; */
+  max-height: 17em;
+  max-width: 100%;
 }
 
 .techItemLinks {
