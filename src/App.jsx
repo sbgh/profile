@@ -319,11 +319,11 @@ function App() {
           </div>
 
           <div id="services" className="row services">
-            <Services />
+            {/* <Services /> */}
           </div>
 
           <div id="tech" className="row tech">
-            <Tech />
+            {/* <Tech /> */}
           </div>
 
           <div id="about" className="row about">

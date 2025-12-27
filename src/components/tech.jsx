@@ -20,9 +20,6 @@ https://ChargeRide.ca/
 WordPress Custom Theme (Professional Services)
 Stylish WordPress theme with hand coded 3D effects and responsive design. Plugins include Advanced Custom Fields for content management and WP Mail SMTP for online messaging.
 https://kilanicorp.com/
-WordPress Custom Theme (Hospitality)
-Amazing looking multiple page web site for an Inn. Features complex reservation form, many animation effects and a perfect flow.
-https://theinncalgary.com/
 dsStack Data Science Environment Builder
 Complex Graphical User Interface and Node.js server. This Free Open Source application has the ability to connect to cloud servers and provision them with packages used by data scientists. Things like Docker, Steamlit and more. 
 https://ezstacksystems.com:8443/
@@ -30,6 +27,10 @@ ezStack Automated Web Server & Application Builder
 An even more complex Free Open Source application made with Node.js. Used to build web application, and manage servers, with a building-blocks approach. Provides user feedback via headless Chrome integration.
 https://github.com/sbgh/builder
 `
+
+// WordPress Custom Theme (Hospitality)
+// Amazing looking multiple page web site for an Inn. Features complex reservation form, many animation effects and a perfect flow.
+// https://theinncalgary.com/
 
 const techsArr = techsList.split("\n").filter(function (e) { return e }); //split tech list lines into array and filter out empty items
 
